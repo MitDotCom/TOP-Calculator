@@ -1,5 +1,5 @@
 // CONSTANTS
-
+const readOut = document.getElementById('readOut');
 const clearBtn = document.querySelector('.clear');
 const deleteBtn = document.querySelector('.delete');
 const sevenBtn = document.querySelector('.seven');
@@ -19,38 +19,178 @@ const zeroBtn = document.querySelector('.zero');
 const equalsBtn = document.querySelector('.equals');
 const plusBtn = document.querySelector('.plus');
 
-clearBtn.addEventListener('click', function(e) { });
 
-deleteBtn.addEventListener('click', function(e) { });
+//VARIABLES
 
-sevenBtn.addEventListener('click', function(e) { });
+let totalNum = 0;
+let currentNum = 0;
 
-eightBtn.addEventListener('click', function(e) { });
+// FUNCTIONS
+function add(e) {
+    totalNum += currentNum
+    return totalNum;
+};
 
-nineBtn.addEventListener('click', function(e) { });
+function subtract() {
 
-divideBtn.addEventListener('click', function(e) { });
+};
 
-fourBtn.addEventListener('click', function(e) { });
+function multiply() {
 
-fiveBtn.addEventListener('click', function(e) { });
+};
 
-sixBtn.addEventListener('click', function(e) { });
+function divide() {
 
-multiplyBtn.addEventListener('click', function(e) { });
+};
 
-oneBtn.addEventListener('click', function(e) { });
+// EVENT LISTENERS
+clearBtn.addEventListener('click', function(e) {
+    e.stopImmediatePropagation();
+    if (currentNum === 0) {
+        currentNum = 1;
 
-twoBtn.addEventListener('click', function(e) { });
+    } else {
+        currentNum += "1";
+    }
+    readOut.textContent = currentNum;
+});
 
-threeBtn.addEventListener('click', function(e) { });
+deleteBtn.addEventListener('click', function(e) {
+    e.stopImmediatePropagation();
+    
+});
 
-minusBtn.addEventListener('click', function(e) { });
+sevenBtn.addEventListener('click', function(e) {
+    e.stopImmediatePropagation();
+    if (currentNum === 0) {
+        currentNum = 1;
 
-decimalBtn.addEventListener('click', function(e) { });
+    } else {
+        currentNum += "1";
+    }
+    readOut.textContent = currentNum;
+});
 
-zeroBtn.addEventListener('click', function(e) { });
+eightBtn.addEventListener('click', function(e) {
+    e.stopImmediatePropagation();
+    if (currentNum === 0) {
+        currentNum = 1;
 
-equalsBtn.addEventListener('click', function(e) { });
+    } else {
+        currentNum += "1";
+    }
+    readOut.textContent = currentNum;
+});
 
-plusBtn.addEventListener('click', function(e) { });
+nineBtn.addEventListener('click', function(e) {
+    e.stopImmediatePropagation();
+    if (currentNum === 0) {
+        currentNum = 1;
+
+    } else {
+        currentNum += "1";
+    }
+    readOut.textContent = currentNum;
+});
+
+divideBtn.addEventListener('click', function(e) {
+    e.stopImmediatePropagation();
+});
+
+fourBtn.addEventListener('click', function(e) {
+    e.stopImmediatePropagation();
+    if (currentNum === 0) {
+        currentNum = 1;
+
+    } else {
+        currentNum += "1";
+    }
+    readOut.textContent = currentNum;
+});
+
+fiveBtn.addEventListener('click', function(e) {
+    e.stopImmediatePropagation();
+    if (currentNum === 0) {
+        currentNum = 1;
+
+    } else {
+        currentNum += "1";
+    }
+    readOut.textContent = currentNum;
+});
+
+sixBtn.addEventListener('click', function(e) {
+    e.stopImmediatePropagation();
+    if (currentNum === 0) {
+        currentNum = 1;
+
+    } else {
+        currentNum += "1";
+    }
+    readOut.textContent = currentNum;
+});
+
+multiplyBtn.addEventListener('click', function(e) {
+    e.stopImmediatePropagation();
+});
+
+oneBtn.addEventListener('click', function(e) {
+    e.stopImmediatePropagation();
+    if (currentNum === 0) {
+        currentNum = 1;
+
+    } else {
+        currentNum += "1";
+    }
+    readOut.textContent = currentNum;
+});
+
+twoBtn.addEventListener('click', function(e) {
+    e.stopImmediatePropagation();
+    if (currentNum === 0) {
+        currentNum = 1;
+
+    } else {
+        currentNum += "1";
+    }
+    readOut.textContent = currentNum;
+});
+
+threeBtn.addEventListener('click', function(e) {
+    e.stopImmediatePropagation();
+    if (currentNum === 0) {
+        currentNum = 1;
+
+    } else {
+        currentNum += "1";
+    }
+    readOut.textContent = currentNum;
+});
+
+minusBtn.addEventListener('click', function(e) {
+    e.stopImmediatePropagation();
+});
+
+decimalBtn.addEventListener('click', function(e) {
+    e.stopImmediatePropagation();
+});
+
+zeroBtn.addEventListener('click', function(e) {
+    e.stopImmediatePropagation();
+    if (currentNum === 0) {
+        currentNum = 1;
+
+    } else {
+        currentNum += "1";
+    }
+    readOut.textContent = currentNum;
+});
+
+equalsBtn.addEventListener('click', function(e) {
+    e.stopImmediatePropagation();
+});
+
+plusBtn.addEventListener('click', function(e) {
+    e.stopImmediatePropagation();
+    add(e);
+});

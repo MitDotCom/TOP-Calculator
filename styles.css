@@ -6,7 +6,7 @@ body {
 }
 
 #calc-frame {
-    width: 400px;
+    width: 360px;
     height: 500px;
     background-color: grey;
     padding: 10px;
@@ -38,29 +38,30 @@ body {
 }
 
 .clearButtons button {
-    width: 140px;
+    width: 170px;
     height: 65px;
 }
 
 .firstRow button {
-    width: 65px;
+    width: 75px;
     height: 65px;
 }
 
 .secondRow button {
-    width: 65px;
+    width: 75px;
     height: 65px;
 }
 
 .thirdRow button {
-    width: 65px;
+    width: 75px;
     height: 65px;
 }
 
 .fourthRow button {
-    width: 65px;
+    width: 75px;
     height: 65px;
 }
+
 button {
     font-size: 40px;
     text-align: center;
