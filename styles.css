@@ -8,7 +8,7 @@ body {
 #calc-frame {
     width: 400px;
     height: 500px;
-    background-color: navy;
+    background-color: grey;
     padding: 10px;
     border: 2px solid black;
     border-radius: 10px;;
@@ -21,8 +21,48 @@ body {
     align-items: flex-end;
     height: 120px;
     background-color: white;
+    border-radius: 10px;
 }
 
 #buttons {
+    height: 350px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
+#buttons div {
+    display: flex;
+    justify-content: space-around;
+}
+
+.clearButtons button {
+    width: 140px;
+    height: 65px;
+}
+
+.firstRow button {
+    width: 65px;
+    height: 65px;
+}
+
+.secondRow button {
+    width: 65px;
+    height: 65px;
+}
+
+.thirdRow button {
+    width: 65px;
+    height: 65px;
+}
+
+.fourthRow button {
+    width: 65px;
+    height: 65px;
+}
+button {
+    font-size: 40px;
+    text-align: center;
+    border-radius: 10px;
 }
