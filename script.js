@@ -26,7 +26,7 @@ let totalNum = 0;
 let currentNum = 0;
 
 // FUNCTIONS
-function add(e) {
+function add(currentNum,totalNum) {
     totalNum += currentNum
     return totalNum;
 };
@@ -46,12 +46,8 @@ function divide() {
 // EVENT LISTENERS
 clearBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
-    if (currentNum === 0) {
-        currentNum = 1;
-
-    } else {
-        currentNum += "1";
-    }
+    currentNum = 0;
+    totalNum = 0;
     readOut.textContent = currentNum;
 });
 
@@ -63,10 +59,12 @@ deleteBtn.addEventListener('click', function(e) {
 sevenBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
     if (currentNum === 0) {
-        currentNum = 1;
+        currentNum = 7;
 
+    } else if (currentNum.toString().length === 14){
+        
     } else {
-        currentNum += "1";
+        currentNum += "7";
     }
     readOut.textContent = currentNum;
 });
@@ -74,10 +72,12 @@ sevenBtn.addEventListener('click', function(e) {
 eightBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
     if (currentNum === 0) {
-        currentNum = 1;
+        currentNum = 8;
 
+    } else if (currentNum.toString().length === 14){
+        
     } else {
-        currentNum += "1";
+        currentNum += "8";
     }
     readOut.textContent = currentNum;
 });
@@ -85,10 +85,12 @@ eightBtn.addEventListener('click', function(e) {
 nineBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
     if (currentNum === 0) {
-        currentNum = 1;
+        currentNum = 9;
 
+    } else if (currentNum.toString().length === 14){
+        
     } else {
-        currentNum += "1";
+        currentNum += "9";
     }
     readOut.textContent = currentNum;
 });
@@ -100,10 +102,12 @@ divideBtn.addEventListener('click', function(e) {
 fourBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
     if (currentNum === 0) {
-        currentNum = 1;
+        currentNum = 4;
 
+    } else if (currentNum.toString().length === 14){
+        
     } else {
-        currentNum += "1";
+        currentNum += "4";
     }
     readOut.textContent = currentNum;
 });
@@ -111,10 +115,12 @@ fourBtn.addEventListener('click', function(e) {
 fiveBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
     if (currentNum === 0) {
-        currentNum = 1;
+        currentNum = 5;
 
+    } else if (currentNum.toString().length === 14){
+        
     } else {
-        currentNum += "1";
+        currentNum += "5";
     }
     readOut.textContent = currentNum;
 });
@@ -122,10 +128,12 @@ fiveBtn.addEventListener('click', function(e) {
 sixBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
     if (currentNum === 0) {
-        currentNum = 1;
+        currentNum = 6;
 
+    } else if (currentNum.toString().length === 14){
+        
     } else {
-        currentNum += "1";
+        currentNum += "6";
     }
     readOut.textContent = currentNum;
 });
@@ -138,6 +146,7 @@ oneBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
     if (currentNum === 0) {
         currentNum = 1;
+    } else if (currentNum.toString().length === 14){
 
     } else {
         currentNum += "1";
@@ -148,10 +157,12 @@ oneBtn.addEventListener('click', function(e) {
 twoBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
     if (currentNum === 0) {
-        currentNum = 1;
+        currentNum = 2;
 
+    } else if (currentNum.toString().length === 14){
+        
     } else {
-        currentNum += "1";
+        currentNum += "2";
     }
     readOut.textContent = currentNum;
 });
@@ -159,10 +170,12 @@ twoBtn.addEventListener('click', function(e) {
 threeBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
     if (currentNum === 0) {
-        currentNum = 1;
+        currentNum = 3;
 
+    } else if (currentNum.toString().length === 14){
+        
     } else {
-        currentNum += "1";
+        currentNum += "3";
     }
     readOut.textContent = currentNum;
 });
@@ -178,10 +191,12 @@ decimalBtn.addEventListener('click', function(e) {
 zeroBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
     if (currentNum === 0) {
-        currentNum = 1;
+        currentNum = 0;
 
+    } else if (currentNum.toString().length === 14){
+        
     } else {
-        currentNum += "1";
+        currentNum += "0";
     }
     readOut.textContent = currentNum;
 });
