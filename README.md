@@ -1,6 +1,9 @@
 # TOP-Calculator
 The Calculator project from The Odin Project
 
+The link for this project can be found at: 
+https://github.com/MitDotCom/TOP-Calculator
+
 11/04/2023
 I finally made it to the last project in this course! I'm excited to begin working on this project.
 I'm sure it will take me a while, but I'm sure I'll eventually get it.
