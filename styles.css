@@ -73,6 +73,10 @@ button {
     border-radius: 10px;
 }
 
+button:hover {
+    background-color: silver;
+}
+
 #footer {
     text-align: center;
     margin-top: 115px;
