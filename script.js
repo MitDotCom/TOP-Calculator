@@ -24,6 +24,7 @@ const plusBtn = document.querySelector('.plus');
 
 let totalNum = 0;
 let currentNum = 0;
+let lastNum = 0;
 
 // FUNCTIONS
 function add(currentNum,totalNum) {
@@ -53,7 +54,8 @@ clearBtn.addEventListener('click', function(e) {
 
 deleteBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
-    
+
+    readOut.textContent = currentNum;
 });
 
 sevenBtn.addEventListener('click', function(e) {
