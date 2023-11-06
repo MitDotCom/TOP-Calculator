@@ -16,23 +16,25 @@ body {
 }
 
 #readOut {
-    font-size: 75px;
-    padding-right: 10px;
+    font-size: 100px;
+    padding-right: 20px;
+    padding-bottom: 20px;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-    height: 200px;
+    height: 175px;
     background-color: white;
     border: 2px solid black;
     border-radius: 10px;
 }
 
 #buttons {
-    height: 350px;
+    height: 500px;
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 10px;
 }
 
 #buttons div {
@@ -41,28 +43,28 @@ body {
 }
 
 .clearButtons button {
-    width: 170px;
-    height: 65px;
+    width: 240px;
+    height: 100px;
 }
 
 .firstRow button {
-    width: 75px;
-    height: 65px;
+    width: 115px;
+    height: 100px;
 }
 
 .secondRow button {
-    width: 75px;
-    height: 65px;
+    width: 115px;
+    height: 100px;
 }
 
 .thirdRow button {
-    width: 75px;
-    height: 65px;
+    width: 115px;
+    height: 100px;
 }
 
 .fourthRow button {
-    width: 75px;
-    height: 65px;
+    width: 115px;
+    height: 100px;
 }
 
 button {
@@ -73,6 +75,6 @@ button {
 
 #footer {
     text-align: center;
-    margin-top: 75px;
+    margin-top: 115px;
     font-size: 25px;
 }
