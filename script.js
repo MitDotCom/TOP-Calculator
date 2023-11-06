@@ -19,6 +19,7 @@ const zeroBtn = document.querySelector('.zero');
 const equalsBtn = document.querySelector('.equals');
 const plusBtn = document.querySelector('.plus');
 
+const maxNum = 9999999999;
 
 //VARIABLES
 
