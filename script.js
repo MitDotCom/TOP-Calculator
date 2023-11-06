@@ -63,7 +63,7 @@ sevenBtn.addEventListener('click', function(e) {
     if (currentNum === 0) {
         currentNum = 7;
 
-    } else if (currentNum.toString().length === 14){
+    } else if (currentNum.toString().length === 10){
         
     } else {
         currentNum += "7";
@@ -76,7 +76,7 @@ eightBtn.addEventListener('click', function(e) {
     if (currentNum === 0) {
         currentNum = 8;
 
-    } else if (currentNum.toString().length === 14){
+    } else if (currentNum.toString().length === 10){
         
     } else {
         currentNum += "8";
@@ -89,7 +89,7 @@ nineBtn.addEventListener('click', function(e) {
     if (currentNum === 0) {
         currentNum = 9;
 
-    } else if (currentNum.toString().length === 14){
+    } else if (currentNum.toString().length === 10){
         
     } else {
         currentNum += "9";
@@ -106,7 +106,7 @@ fourBtn.addEventListener('click', function(e) {
     if (currentNum === 0) {
         currentNum = 4;
 
-    } else if (currentNum.toString().length === 14){
+    } else if (currentNum.toString().length === 10){
         
     } else {
         currentNum += "4";
@@ -119,7 +119,7 @@ fiveBtn.addEventListener('click', function(e) {
     if (currentNum === 0) {
         currentNum = 5;
 
-    } else if (currentNum.toString().length === 14){
+    } else if (currentNum.toString().length === 10){
         
     } else {
         currentNum += "5";
@@ -132,7 +132,7 @@ sixBtn.addEventListener('click', function(e) {
     if (currentNum === 0) {
         currentNum = 6;
 
-    } else if (currentNum.toString().length === 14){
+    } else if (currentNum.toString().length === 10){
         
     } else {
         currentNum += "6";
@@ -148,7 +148,7 @@ oneBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
     if (currentNum === 0) {
         currentNum = 1;
-    } else if (currentNum.toString().length === 14){
+    } else if (currentNum.toString().length === 10){
 
     } else {
         currentNum += "1";
@@ -161,7 +161,7 @@ twoBtn.addEventListener('click', function(e) {
     if (currentNum === 0) {
         currentNum = 2;
 
-    } else if (currentNum.toString().length === 14){
+    } else if (currentNum.toString().length === 10){
         
     } else {
         currentNum += "2";
@@ -174,7 +174,7 @@ threeBtn.addEventListener('click', function(e) {
     if (currentNum === 0) {
         currentNum = 3;
 
-    } else if (currentNum.toString().length === 14){
+    } else if (currentNum.toString().length === 10){
         
     } else {
         currentNum += "3";
@@ -195,7 +195,7 @@ zeroBtn.addEventListener('click', function(e) {
     if (currentNum === 0) {
         currentNum = 0;
 
-    } else if (currentNum.toString().length === 14){
+    } else if (currentNum.toString().length === 10){
         
     } else {
         currentNum += "0";
