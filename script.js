@@ -56,7 +56,7 @@ clearBtn.addEventListener('click', function(e) {
 
 deleteBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
-
+    console.log(nextNum);
     readOut.textContent = nextNum;
 });
 
@@ -64,9 +64,15 @@ sevenBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
     if (nextNum === "0") {
         nextNum = "7";
+        total = nextNum;
 
     } else if (nextNum.toString().length === 10){
         
+    } else if 
+        (!(operator === "")) {
+            nextNum = "7"
+            totalNum = Number(firstNum + operator + nextNum)
+
     } else {
         nextNum += "7";
     }
@@ -81,7 +87,8 @@ eightBtn.addEventListener('click', function(e) {
     } else if (nextNum.toString().length === 10){
         
     } else {
-        nextNum += "8";
+        nextNum = "8"
+        total += "8";
     }
     readOut.textContent = nextNum;
 });
@@ -118,7 +125,7 @@ fourBtn.addEventListener('click', function(e) {
 
 fiveBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
-    if (firstNum === "0") {
+    if (nextNum === "0") {
         nextNum = "5";
 
     } else if (nextNum.toString().length === 10){
@@ -137,7 +144,7 @@ sixBtn.addEventListener('click', function(e) {
     } else if (nextNum.toString().length === 10){
         
     } else {
-        nexttNum += "6";
+        nextNum += "6";
     }
     readOut.textContent = nextNum;
 });
@@ -211,5 +218,5 @@ equalsBtn.addEventListener('click', function(e) {
 
 plusBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
-    add(e);
+    operator = "+";
 });
