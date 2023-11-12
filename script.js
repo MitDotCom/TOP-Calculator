@@ -1,6 +1,6 @@
 // CONSTANTS
 const calcs = document.getElementById('calcs');
-const readOut = document.getElementById('readOut');
+const current = document.getElementById('current');
 const clearBtn = document.querySelector('.clear');
 const deleteBtn = document.querySelector('.delete');
 const sevenBtn = document.querySelector('.seven');
@@ -49,7 +49,7 @@ clearBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
     firstNum = "0";
     nextNum = "0";
-    readOut.textContent = nextNum;
+    current.textContent = nextNum;
 });
 
 deleteBtn.addEventListener('click', function(e) {
@@ -57,7 +57,7 @@ deleteBtn.addEventListener('click', function(e) {
     nextNum = nextNum.split('');
     nextNum.splice(-1,1);
     nextNum = nextNum.join('');
-    readOut.textContent = nextNum;
+    current.textContent = nextNum;
 });
 
 // working out logic just on seven button for now
@@ -67,6 +67,7 @@ sevenBtn.addEventListener('click', function(e) {
     if (nextNum === "0") {
         nextNum = "7";
         total = nextNum;
+        // calcs.
 
     } else if (nextNum.toString().length === 10){
         // Max readOut length, don't add another number
@@ -79,7 +80,7 @@ sevenBtn.addEventListener('click', function(e) {
     } else {
         nextNum += "7";
     }
-    readOut.textContent = nextNum;
+    current.textContent = nextNum;
 });
 
 eightBtn.addEventListener('click', function(e) {
@@ -92,7 +93,7 @@ eightBtn.addEventListener('click', function(e) {
     } else {
         nextNum += "8";
     }
-    readOut.textContent = nextNum;
+    current.textContent = nextNum;
 });
 
 nineBtn.addEventListener('click', function(e) {
@@ -105,7 +106,7 @@ nineBtn.addEventListener('click', function(e) {
     } else {
         nextNum += "9";
     }
-    readOut.textContent = nextNum;
+    current.textContent = nextNum;
 });
 
 divideBtn.addEventListener('click', function(e) {
@@ -122,7 +123,7 @@ fourBtn.addEventListener('click', function(e) {
     } else {
         nextNum += "4";
     }
-    readOut.textContent = nextNum;
+    current.textContent = nextNum;
 });
 
 fiveBtn.addEventListener('click', function(e) {
@@ -135,7 +136,7 @@ fiveBtn.addEventListener('click', function(e) {
     } else {
         nextNum += "5";
     }
-    readOut.textContent = nextNum;
+    current.textContent = nextNum;
 });
 
 sixBtn.addEventListener('click', function(e) {
@@ -148,7 +149,7 @@ sixBtn.addEventListener('click', function(e) {
     } else {
         nextNum += "6";
     }
-    readOut.textContent = nextNum;
+    current.textContent = nextNum;
 });
 
 multiplyBtn.addEventListener('click', function(e) {
@@ -164,7 +165,7 @@ oneBtn.addEventListener('click', function(e) {
     } else {
         nextNum += "1";
     }
-    readOut.textContent = nextNum;
+    current.textContent = nextNum;
 });
 
 twoBtn.addEventListener('click', function(e) {
@@ -177,7 +178,7 @@ twoBtn.addEventListener('click', function(e) {
     } else {
         nextNum += "2";
     }
-    readOut.textContent = nextNum;
+    current.textContent = nextNum;
 });
 
 threeBtn.addEventListener('click', function(e) {
@@ -190,7 +191,7 @@ threeBtn.addEventListener('click', function(e) {
     } else {
         nextNum += "3";
     }
-    readOut.textContent = nextNum;
+    current.textContent = nextNum;
 });
 
 minusBtn.addEventListener('click', function(e) {
@@ -211,7 +212,7 @@ zeroBtn.addEventListener('click', function(e) {
     } else {
         nextNum += "0";
     }
-    readOut.textContent = nextNum;
+    current.textContent = nextNum;
 });
 
 equalsBtn.addEventListener('click', function(e) {
