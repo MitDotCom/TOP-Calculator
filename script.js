@@ -53,7 +53,9 @@ clearBtn.addEventListener('click', function(e) {
 
 deleteBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
-    console.log(nextNum);
+    nextNum = nextNum.split('');
+    nextNum.splice(-1,1);
+    nextNum = nextNum.join('');
     readOut.textContent = nextNum;
 });
 
