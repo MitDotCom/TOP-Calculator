@@ -1,4 +1,5 @@
 // CONSTANTS
+const calcs = document.getElementById('calcs');
 const readOut = document.getElementById('readOut');
 const clearBtn = document.querySelector('.clear');
 const deleteBtn = document.querySelector('.delete');
@@ -59,6 +60,8 @@ deleteBtn.addEventListener('click', function(e) {
     readOut.textContent = nextNum;
 });
 
+// working out logic just on seven button for now
+
 sevenBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
     if (nextNum === "0") {
@@ -68,9 +71,11 @@ sevenBtn.addEventListener('click', function(e) {
     } else if (nextNum.toString().length === 10){
         // Max readOut length, don't add another number
     } else if 
-        (!(operator === "")) {
-            nextNum += "7";
-            total = equate(firstNum,operator,nextNum);
+        ((!(operator === "")) && (firstNum === "0")) {
+            firstNum = nextNum;
+            nextNum = "7";
+    } else if (!(operator === "")) {
+        nextNum += "7";
     } else {
         nextNum += "7";
     }
@@ -217,4 +222,5 @@ equalsBtn.addEventListener('click', function(e) {
 plusBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
     operator = "+";
+    firstNum = nextNum;
 });

@@ -16,10 +16,10 @@ body {
 }
 
 #readOut {
-    font-size: 90px;
     padding-right: 20px;
     padding-bottom: 20px;
     display: flex;
+    flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
     height: 175px;
@@ -28,6 +28,15 @@ body {
     border-radius: 10px;
 }
 
+#calcs {
+    font-size: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+#current {
+    font-size: 90px;
+}
 #buttons {
     height: 500px;
     margin-top: 10px;
