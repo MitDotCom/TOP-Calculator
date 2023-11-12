@@ -1,6 +1,7 @@
 // CONSTANTS
-const calcs = document.getElementById('calcs');
-const current = document.getElementById('current');
+const firstNumRead = document.querySelector('.firstNumRead');
+const currentNumRead = document.querySelector('.currentNumRead');
+const currentNumCalc = document.getElementById('currentNumCalc');
 const clearBtn = document.querySelector('.clear');
 const deleteBtn = document.querySelector('.delete');
 const sevenBtn = document.querySelector('.seven');
@@ -26,17 +27,17 @@ const maxNum = 9999999999;
 
 let firstNum = "0";
 let operator = "";
-let nextNum = "0";
+let currentNum = "0";
 let total = "0";
 
 // FUNCTIONS
-function add(firstNum,nextNum) {
+function add(firstNum,currentNum) {
     operator = "+";
-    return firstNum + operator + nextNum;
+    return firstNum + operator + currentNum;
 };
 
-function equate(firstNum,operator,nextNum) {
-    let equation = firstNum + operator + nextNum;
+function equate(firstNum,operator,currentNum) {
+    let equation = firstNum + operator + currentNum;
     console.log(equation);
     equation = equation.split('');
     console.log(equation);
@@ -48,65 +49,76 @@ function equate(firstNum,operator,nextNum) {
 clearBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
     firstNum = "0";
-    nextNum = "0";
-    current.textContent = nextNum;
+    currentNum = "0";
+    firstNumRead.textContent = firstNum;
+    currentNumRead.textContent = currentNum;
+    currentNumCalc.textContent = currentNum;
 });
 
 deleteBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
-    nextNum = nextNum.split('');
-    nextNum.splice(-1,1);
-    nextNum = nextNum.join('');
-    current.textContent = nextNum;
+    currentNum = currentNum.split('');
+    currentNum.splice(-1,1);
+    currentNum = currentNum.join('');
+    firstNumRead.textContent = firstNum;
+    currentNumRead.textContent = currentNum;
+    currentNumCalc.textContent = currentNum;
 });
 
 // working out logic just on seven button for now
 
 sevenBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
-    if (nextNum === "0") {
-        nextNum = "7";
-        total = nextNum;
+    if (currentNum === "0") {
+        currentNum = "7";
+        total = currentNum;
         // calcs.
 
-    } else if (nextNum.toString().length === 10){
+    } else if (currentNum.toString().length === 10){
         // Max readOut length, don't add another number
     } else if 
         ((!(operator === "")) && (firstNum === "0")) {
-            firstNum = nextNum;
-            nextNum = "7";
+            firstNum = currentNum;
+            currentNum = "7";
     } else if (!(operator === "")) {
-        nextNum += "7";
+        currentNum += "7";
     } else {
-        nextNum += "7";
+        currentNum += "7";
     }
-    current.textContent = nextNum;
+    firstNumRead.textContent = firstNum;
+    currentNumRead.textContent = currentNum;
+    currentNumCalc.textContent = currentNum;
+    
 });
 
 eightBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
-    if (nextNum === "0") {
-        nextNum = "8";
+    if (currentNum === "0") {
+        currentNum = "8";
 
-    } else if (nextNum.toString().length === 10){
+    } else if (currentNum.toString().length === 10){
         // Max readOut length, don't add another number
     } else {
-        nextNum += "8";
+        currentNum += "8";
     }
-    current.textContent = nextNum;
+    firstNumRead.textContent = firstNum;
+    currentNumRead.textContent = currentNum;
+    currentNumCalc.textContent = currentNum;
 });
 
 nineBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
-    if (nextNum === "0") {
-        nextNum = "9";
+    if (currentNum === "0") {
+        currentNum = "9";
 
-    } else if (nextNum.toString().length === 10){
+    } else if (currentNum.toString().length === 10){
         // Max readOut length, don't add another number
     } else {
-        nextNum += "9";
+        currentNum += "9";
     }
-    current.textContent = nextNum;
+    firstNumRead.textContent = firstNum;
+    currentNumRead.textContent = currentNum;
+    currentNumCalc.textContent = currentNum;
 });
 
 divideBtn.addEventListener('click', function(e) {
@@ -115,41 +127,47 @@ divideBtn.addEventListener('click', function(e) {
 
 fourBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
-    if (nextNum === "0") {
-        nextNum = "4";
+    if (currentNum === "0") {
+        currentNum = "4";
 
-    } else if (nextNum.toString().length === 10){
+    } else if (currentNum.toString().length === 10){
         // Max readOut length, don't add another number
     } else {
-        nextNum += "4";
+        currentNum += "4";
     }
-    current.textContent = nextNum;
+    firstNumRead.textContent = firstNum;
+    currentNumRead.textContent = currentNum;
+    currentNumCalc.textContent = currentNum;
 });
 
 fiveBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
-    if (nextNum === "0") {
-        nextNum = "5";
+    if (currentNum === "0") {
+        currentNum = "5";
 
-    } else if (nextNum.toString().length === 10){
+    } else if (currentNum.toString().length === 10){
         // Max readOut length, don't add another number
     } else {
-        nextNum += "5";
+        currentNum += "5";
     }
-    current.textContent = nextNum;
+    firstNumRead.textContent = firstNum;
+    currentNumRead.textContent = currentNum;
+    currentNumCalc.textContent = currentNum;
 });
 
 sixBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
-    if (nextNum === "0") {
-        nextNum = "6";
+    if (currentNum === "0") {
+        currentNum = "6";
 
-    } else if (nextNum.toString().length === 10){
+    } else if (currentNum.toString().length === 10){
         // Max readOut length, don't add another number
     } else {
-        nextNum += "6";
+        currentNum += "6";
     }
-    current.textContent = nextNum;
+    firstNumRead.textContent = firstNum;
+    currentNumRead.textContent = currentNum;
+    currentNumCalc.textContent = currentNum;
 });
 
 multiplyBtn.addEventListener('click', function(e) {
@@ -158,40 +176,46 @@ multiplyBtn.addEventListener('click', function(e) {
 
 oneBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
-    if (nextNum === "0") {
-        nextNum = "1";
-    } else if (nextNum.toString().length === 10){
+    if (currentNum === "0") {
+        currentNum = "1";
+    } else if (currentNum.toString().length === 10){
         // Max readOut length, don't add another number
     } else {
-        nextNum += "1";
+        currentNum += "1";
     }
-    current.textContent = nextNum;
+    firstNumRead.textContent = firstNum;
+    currentNumRead.textContent = currentNum;
+    currentNumCalc.textContent = currentNum;
 });
 
 twoBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
-    if (nextNum === "0") {
-        nextNum = "2";
+    if (currentNum === "0") {
+        currentNum = "2";
 
-    } else if (nextNum.toString().length === 10){
+    } else if (currentNum.toString().length === 10){
         // Max readOut length, don't add another number
     } else {
-        nextNum += "2";
+        currentNum += "2";
     }
-    current.textContent = nextNum;
+    firstNumRead.textContent = firstNum;
+    currentNumRead.textContent = currentNum;
+    currentNumCalc.textContent = currentNum;
 });
 
 threeBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
-    if (nextNum === "0") {
-        nextNum = "3";
+    if (currentNum === "0") {
+        currentNum = "3";
 
-    } else if (nextNum.toString().length === 10){
+    } else if (currentNum.toString().length === 10){
         // Max readOut length, don't add another number
     } else {
-        nextNum += "3";
+        currentNum += "3";
     }
-    current.textContent = nextNum;
+    firstNumRead.textContent = firstNum;
+    currentNumRead.textContent = currentNum;
+    currentNumCalc.textContent = currentNum;
 });
 
 minusBtn.addEventListener('click', function(e) {
@@ -204,24 +228,26 @@ decimalBtn.addEventListener('click', function(e) {
 
 zeroBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
-    if (nextNum === "0") {
-        nextNum = "0";
+    if (currentNum === "0") {
+        currentNum = "0";
 
-    } else if (nextNum.toString().length === 10){
+    } else if (currentNum.toString().length === 10){
         // Max readOut length, don't add another number
     } else {
-        nextNum += "0";
+        currentNum += "0";
     }
-    current.textContent = nextNum;
+    firstNumRead.textContent = firstNum;
+    currentNumRead.textContent = currentNum;
+    currentNumCalc.textContent = currentNum;
 });
 
 equalsBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
-    total = Number(firstNum + operator + nextNum);
+    total = Number(firstNum + operator + currentNum);
 });
 
 plusBtn.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
     operator = "+";
-    firstNum = nextNum;
+    firstNum = currentNum;
 });
