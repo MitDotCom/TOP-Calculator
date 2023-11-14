@@ -22,7 +22,12 @@ const equalsBtn = document.querySelector('.equals');
 const plusBtn = document.querySelector('.plus');
 
 const maxNum = 9999999999;
-
+const operators = {
+    "-" : function(firstNum,currentNum) {firstNum - currentNum},
+    "+" : function(firstNum,currentNum) {firstNum + currentNum},
+    "*" : function(firstNum,currentNum) {firstNum * currentNum},
+    "/" : function(firstNum,currentNum) {firstNum / currentNum}
+};
 //VARIABLES
 
 let firstNum = "0";
@@ -37,42 +42,45 @@ function add(firstNum,currentNum) {
 };
 
 function equate(firstNum,operator,currentNum) {
-    let equation = firstNum + operator + currentNum;
-    console.log(equation);
-    equation = equation.split('');
-    console.log(equation);
-    // totalNum.reduce((a,b) => a `${operator}` b);
+    total = firstNum + operator + currentNum;
+    total = total.split(/(?=[\W])|(?<=[\W])/);
+    total = operators[total[1]];
+    console.log(total)
+    console.log(currentNum);
+    currentNum = total;
+}
 
+function updateReadOut() {
+    firstNumRead.textContent = firstNum;
+    currentNumRead.textContent = currentNum;
+    currentNumCalc.textContent = currentNum;
 }
 
 // EVENT LISTENERS
 clearBtn.addEventListener('click', function(e) {
-    e.stopImmediatePropagation();
+    e.stopPropagation();
     firstNum = "0";
     currentNum = "0";
-    firstNumRead.textContent = firstNum;
-    currentNumRead.textContent = currentNum;
-    currentNumCalc.textContent = currentNum;
+    operator =  "";
+    updateReadOut();
 });
 
 deleteBtn.addEventListener('click', function(e) {
-    e.stopImmediatePropagation();
+    e.stopPropagation();
     currentNum = currentNum.split('');
     currentNum.splice(-1,1);
     currentNum = currentNum.join('');
-    firstNumRead.textContent = firstNum;
-    currentNumRead.textContent = currentNum;
-    currentNumCalc.textContent = currentNum;
+    updateReadOut();
 });
 
 // working out logic just on seven button for now
 
 sevenBtn.addEventListener('click', function(e) {
-    e.stopImmediatePropagation();
+    e.stopPropagation();
     if (currentNum === "0") {
         currentNum = "7";
         total = currentNum;
-        // calcs.
+        // calc
 
     } else if (currentNum.toString().length === 10){
         // Max readOut length, don't add another number
@@ -85,14 +93,12 @@ sevenBtn.addEventListener('click', function(e) {
     } else {
         currentNum += "7";
     }
-    firstNumRead.textContent = firstNum;
-    currentNumRead.textContent = currentNum;
-    currentNumCalc.textContent = currentNum;
+    updateReadOut();
     
 });
 
 eightBtn.addEventListener('click', function(e) {
-    e.stopImmediatePropagation();
+    e.stopPropagation();
     if (currentNum === "0") {
         currentNum = "8";
 
@@ -101,13 +107,11 @@ eightBtn.addEventListener('click', function(e) {
     } else {
         currentNum += "8";
     }
-    firstNumRead.textContent = firstNum;
-    currentNumRead.textContent = currentNum;
-    currentNumCalc.textContent = currentNum;
+    updateReadOut();
 });
 
 nineBtn.addEventListener('click', function(e) {
-    e.stopImmediatePropagation();
+    e.stopPropagation();
     if (currentNum === "0") {
         currentNum = "9";
 
@@ -116,17 +120,15 @@ nineBtn.addEventListener('click', function(e) {
     } else {
         currentNum += "9";
     }
-    firstNumRead.textContent = firstNum;
-    currentNumRead.textContent = currentNum;
-    currentNumCalc.textContent = currentNum;
+    updateReadOut();
 });
 
 divideBtn.addEventListener('click', function(e) {
-    e.stopImmediatePropagation();
+    e.stopPropagation();
 });
 
 fourBtn.addEventListener('click', function(e) {
-    e.stopImmediatePropagation();
+    e.stopPropagation();
     if (currentNum === "0") {
         currentNum = "4";
 
@@ -135,13 +137,11 @@ fourBtn.addEventListener('click', function(e) {
     } else {
         currentNum += "4";
     }
-    firstNumRead.textContent = firstNum;
-    currentNumRead.textContent = currentNum;
-    currentNumCalc.textContent = currentNum;
+    updateReadOut();
 });
 
 fiveBtn.addEventListener('click', function(e) {
-    e.stopImmediatePropagation();
+    e.stopPropagation();
     if (currentNum === "0") {
         currentNum = "5";
 
@@ -150,13 +150,11 @@ fiveBtn.addEventListener('click', function(e) {
     } else {
         currentNum += "5";
     }
-    firstNumRead.textContent = firstNum;
-    currentNumRead.textContent = currentNum;
-    currentNumCalc.textContent = currentNum;
+    updateReadOut();
 });
 
 sixBtn.addEventListener('click', function(e) {
-    e.stopImmediatePropagation();
+    e.stopPropagation();
     if (currentNum === "0") {
         currentNum = "6";
 
@@ -165,17 +163,15 @@ sixBtn.addEventListener('click', function(e) {
     } else {
         currentNum += "6";
     }
-    firstNumRead.textContent = firstNum;
-    currentNumRead.textContent = currentNum;
-    currentNumCalc.textContent = currentNum;
+    updateReadOut();
 });
 
 multiplyBtn.addEventListener('click', function(e) {
-    e.stopImmediatePropagation();
+    e.stopPropagation();
 });
 
 oneBtn.addEventListener('click', function(e) {
-    e.stopImmediatePropagation();
+    e.stopPropagation();
     if (currentNum === "0") {
         currentNum = "1";
     } else if (currentNum.toString().length === 10){
@@ -183,13 +179,11 @@ oneBtn.addEventListener('click', function(e) {
     } else {
         currentNum += "1";
     }
-    firstNumRead.textContent = firstNum;
-    currentNumRead.textContent = currentNum;
-    currentNumCalc.textContent = currentNum;
+    updateReadOut();
 });
 
 twoBtn.addEventListener('click', function(e) {
-    e.stopImmediatePropagation();
+    e.stopPropagation();
     if (currentNum === "0") {
         currentNum = "2";
 
@@ -198,13 +192,11 @@ twoBtn.addEventListener('click', function(e) {
     } else {
         currentNum += "2";
     }
-    firstNumRead.textContent = firstNum;
-    currentNumRead.textContent = currentNum;
-    currentNumCalc.textContent = currentNum;
+    updateReadOut();
 });
 
 threeBtn.addEventListener('click', function(e) {
-    e.stopImmediatePropagation();
+    e.stopPropagation();
     if (currentNum === "0") {
         currentNum = "3";
 
@@ -213,21 +205,19 @@ threeBtn.addEventListener('click', function(e) {
     } else {
         currentNum += "3";
     }
-    firstNumRead.textContent = firstNum;
-    currentNumRead.textContent = currentNum;
-    currentNumCalc.textContent = currentNum;
+    updateReadOut();
 });
 
 minusBtn.addEventListener('click', function(e) {
-    e.stopImmediatePropagation();
+    e.stopPropagation();
 });
 
 decimalBtn.addEventListener('click', function(e) {
-    e.stopImmediatePropagation();
+    e.stopPropagation();
 });
 
 zeroBtn.addEventListener('click', function(e) {
-    e.stopImmediatePropagation();
+    e.stopPropagation();
     if (currentNum === "0") {
         currentNum = "0";
 
@@ -236,18 +226,20 @@ zeroBtn.addEventListener('click', function(e) {
     } else {
         currentNum += "0";
     }
-    firstNumRead.textContent = firstNum;
-    currentNumRead.textContent = currentNum;
-    currentNumCalc.textContent = currentNum;
+    updateReadOut();
 });
 
 equalsBtn.addEventListener('click', function(e) {
-    e.stopImmediatePropagation();
-    total = Number(firstNum + operator + currentNum);
+    e.stopPropagation();
+    currentNum = equate(firstNum,operator,currentNum);
 });
 
 plusBtn.addEventListener('click', function(e) {
-    e.stopImmediatePropagation();
+    e.stopPropagation();
+    if (operator === "+") {
+        currentNum = equate(firstNum,operator,currentNum);
+        updateReadOut();
+    }
     operator = "+";
-    firstNum = currentNum;
+
 });
