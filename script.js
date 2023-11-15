@@ -83,6 +83,7 @@ deleteBtn.addEventListener('click', function(e) {
 sevenBtn.addEventListener('click', function(e) {
     e.stopPropagation();
     if (currentNum === "0") {
+        console.log('if (currentNum === "0")');
         currentNum = "7";
         total = currentNum;
         // calc
@@ -91,11 +92,11 @@ sevenBtn.addEventListener('click', function(e) {
         // Max readOut length, don't add another number
     } else if 
         ((!(operator === "")) && (firstNum === "0")) {
+            console.log('else if ((!(operator === "")) && (firstNum === "0"))');
             firstNum = currentNum;
             currentNum = "7";
-    } else if (!(operator === "")) {
-        currentNum += "7";
     } else {
+        console.log('else');
         currentNum += "7";
     }
     updateReadOut();
@@ -316,7 +317,7 @@ plusBtn.addEventListener('click', function(e) {
     e.stopPropagation();
     if (operator) {
         lastNum = currentNum;
-        firstNum,currentNum = equate(firstNum,operator,currentNum);
+        firstNum,operator,currentNum = equate(firstNum,operator,currentNum);
         updateReadOut();
     }
     operator = "+";
