@@ -352,7 +352,7 @@ equalsBtn.addEventListener('click', function(e) {
     if ((operator) && (currentNum.toString().length < 10)) {
     [firstNum,operator,currentNum,equated] = equate(firstNum,operator,currentNum,equated);
     }
-    // operator = "";
+    operator = "";
     updateReadOut();
 });
 
