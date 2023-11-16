@@ -1,5 +1,6 @@
 // CONSTANTS
 const firstNumRead = document.querySelector('.firstNumRead');
+const operatorRead = document.querySelector('.operatorRead');
 const currentNumRead = document.querySelector('.currentNumRead');
 const currentNumCalc = document.getElementById('currentNumCalc');
 const clearBtn = document.querySelector('.clear');
@@ -34,6 +35,7 @@ let firstNum = "0";
 let operator = "";
 let currentNum = "0";
 let total = "0";
+let equated = false;
 
 // FUNCTIONS
 
@@ -52,11 +54,13 @@ function equate(firstNum,operator,currentNum) {
     total = operators[total[1]](firstNum,currentNum);
     console.log(total);
     currentNum = total;
-    return (firstNum,currentNum);
+    equated = true;
+    return (firstNum,operator,currentNum,equated);
 }
 
 function updateReadOut() {
     firstNumRead.textContent = firstNum;
+    operatorRead.textContent = operator;
     currentNumRead.textContent = currentNum;
     currentNumCalc.textContent = currentNum;
 }
@@ -95,6 +99,11 @@ sevenBtn.addEventListener('click', function(e) {
             console.log('else if ((!(operator === "")) && (firstNum === "0"))');
             firstNum = currentNum;
             currentNum = "7";
+    } else if (equated) {
+        console.log('equated');
+        firstNum = currentNum;
+        currentNum = "7";
+        equated = false;
     } else {
         console.log('else');
         currentNum += "7";
@@ -116,8 +125,11 @@ eightBtn.addEventListener('click', function(e) {
         ((!(operator === "")) && (firstNum === "0")) {
             firstNum = currentNum;
             currentNum = "8";
-    } else if (!(operator === "")) {
-        currentNum += "8";
+    } else if (equated) {
+        console.log('equated');
+        firstNum = currentNum;
+        currentNum = "8";
+        equated = false;
     } else {
         currentNum += "8";
     }
@@ -137,8 +149,11 @@ nineBtn.addEventListener('click', function(e) {
         ((!(operator === "")) && (firstNum === "0")) {
             firstNum = currentNum;
             currentNum = "9";
-    } else if (!(operator === "")) {
-        currentNum += "9";
+    } else if (equated) {
+        console.log('equated');
+        firstNum = currentNum;
+        currentNum = "9";
+        equated = false;
     } else {
         currentNum += "9";
     }
@@ -162,8 +177,11 @@ fourBtn.addEventListener('click', function(e) {
         ((!(operator === "")) && (firstNum === "0")) {
             firstNum = currentNum;
             currentNum = "4";
-    } else if (!(operator === "")) {
-        currentNum += "4";
+    } else if (equated) {
+        console.log('equated');
+        firstNum = currentNum;
+        currentNum = "4";
+        equated = false;
     } else {
         currentNum += "4";
     }
@@ -183,8 +201,11 @@ fiveBtn.addEventListener('click', function(e) {
         ((!(operator === "")) && (firstNum === "0")) {
             firstNum = currentNum;
             currentNum = "5";
-    } else if (!(operator === "")) {
-        currentNum += "5";
+    } else if (equated) {
+        console.log('equated');
+        firstNum = currentNum;
+        currentNum = "5";
+        equated = false;
     } else {
         currentNum += "5";
     }
@@ -204,8 +225,11 @@ sixBtn.addEventListener('click', function(e) {
         ((!(operator === "")) && (firstNum === "0")) {
             firstNum = currentNum;
             currentNum = "6";
-    } else if (!(operator === "")) {
-        currentNum += "6";
+    } else if (equated) {
+        console.log('equated');
+        firstNum = currentNum;
+        currentNum = "8";
+        equated = false;
     } else {
         currentNum += "6";
     }
@@ -229,8 +253,11 @@ oneBtn.addEventListener('click', function(e) {
         ((!(operator === "")) && (firstNum === "0")) {
             firstNum = currentNum;
             currentNum = "1";
-    } else if (!(operator === "")) {
-        currentNum += "1";
+    } else if (equated) {
+        console.log('equated');
+        firstNum = currentNum;
+        currentNum = "1";
+        equated = false;
     } else {
         currentNum += "1";
     }
@@ -250,8 +277,11 @@ twoBtn.addEventListener('click', function(e) {
         ((!(operator === "")) && (firstNum === "0")) {
             firstNum = currentNum;
             currentNum = "2";
-    } else if (!(operator === "")) {
-        currentNum += "2";
+    } else if (equated) {
+        console.log('equated');
+        firstNum = currentNum;
+        currentNum = "2";
+        equated = false;
     } else {
         currentNum += "2";
     }
@@ -271,8 +301,11 @@ threeBtn.addEventListener('click', function(e) {
         ((!(operator === "")) && (firstNum === "0")) {
             firstNum = currentNum;
             currentNum = "3";
-    } else if (!(operator === "")) {
-        currentNum += "3";
+    } else if (equated) {
+        console.log('equated');
+        firstNum = currentNum;
+        currentNum = "3";
+        equated = false;
     } else {
         currentNum += "3";
     }
@@ -300,8 +333,11 @@ zeroBtn.addEventListener('click', function(e) {
         ((!(operator === "")) && (firstNum === "0")) {
             firstNum = currentNum;
             currentNum = "0";
-    } else if (!(operator === "")) {
-        currentNum += "0";
+    } else if (equated) {
+        console.log('equated');
+        firstNum = currentNum;
+        currentNum = "0";
+        equated = false;
     } else {
         currentNum += "0";
     }
@@ -310,16 +346,17 @@ zeroBtn.addEventListener('click', function(e) {
 
 equalsBtn.addEventListener('click', function(e) {
     e.stopPropagation();
-    currentNum = equate(firstNum,operator,currentNum);
+    firstNum,operator,currentNum = equate(firstNum,operator,currentNum);
+    operator = "";
+    updateReadOut();
 });
 
 plusBtn.addEventListener('click', function(e) {
     e.stopPropagation();
     if (operator) {
         lastNum = currentNum;
-        firstNum,operator,currentNum = equate(firstNum,operator,currentNum);
-        updateReadOut();
+        firstNum,operator,currentNum,equated = equate(firstNum,operator,currentNum); 
     }
     operator = "+";
-
+    updateReadOut();
 });
