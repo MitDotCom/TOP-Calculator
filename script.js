@@ -39,23 +39,15 @@ let equated = false;
 
 // FUNCTIONS
 
-// NOT SURE I NEED THIS
-// function add(firstNum,currentNum) {
-//     operator = "+";
-//     return firstNum + operator + currentNum;
-// };
-
-function equate(firstNum,operator,currentNum) {
+function equate(firstNum,operator,currentNum,equated) {
     firstNum = parseInt(firstNum);
     currentNum = parseInt(currentNum);
     total = firstNum + operator + currentNum;
     total = total.split(/(?=[\W])|(?<=[\W])/);
-    console.log(total);
     total = operators[total[1]](firstNum,currentNum);
-    console.log(total);
     currentNum = total;
     equated = true;
-    return (firstNum,operator,currentNum,equated);
+    return [firstNum,operator,currentNum,equated];
 }
 
 function updateReadOut() {
@@ -96,16 +88,13 @@ sevenBtn.addEventListener('click', function(e) {
         // Max readOut length, don't add another number
     } else if 
         ((!(operator === "")) && (firstNum === "0")) {
-            console.log('else if ((!(operator === "")) && (firstNum === "0"))');
             firstNum = currentNum;
             currentNum = "7";
     } else if (equated) {
-        console.log('equated');
         firstNum = currentNum;
         currentNum = "7";
         equated = false;
     } else {
-        console.log('else');
         currentNum += "7";
     }
     updateReadOut();
@@ -126,7 +115,6 @@ eightBtn.addEventListener('click', function(e) {
             firstNum = currentNum;
             currentNum = "8";
     } else if (equated) {
-        console.log('equated');
         firstNum = currentNum;
         currentNum = "8";
         equated = false;
@@ -150,7 +138,6 @@ nineBtn.addEventListener('click', function(e) {
             firstNum = currentNum;
             currentNum = "9";
     } else if (equated) {
-        console.log('equated');
         firstNum = currentNum;
         currentNum = "9";
         equated = false;
@@ -178,7 +165,6 @@ fourBtn.addEventListener('click', function(e) {
             firstNum = currentNum;
             currentNum = "4";
     } else if (equated) {
-        console.log('equated');
         firstNum = currentNum;
         currentNum = "4";
         equated = false;
@@ -202,7 +188,6 @@ fiveBtn.addEventListener('click', function(e) {
             firstNum = currentNum;
             currentNum = "5";
     } else if (equated) {
-        console.log('equated');
         firstNum = currentNum;
         currentNum = "5";
         equated = false;
@@ -226,7 +211,6 @@ sixBtn.addEventListener('click', function(e) {
             firstNum = currentNum;
             currentNum = "6";
     } else if (equated) {
-        console.log('equated');
         firstNum = currentNum;
         currentNum = "8";
         equated = false;
@@ -254,7 +238,6 @@ oneBtn.addEventListener('click', function(e) {
             firstNum = currentNum;
             currentNum = "1";
     } else if (equated) {
-        console.log('equated');
         firstNum = currentNum;
         currentNum = "1";
         equated = false;
@@ -278,7 +261,6 @@ twoBtn.addEventListener('click', function(e) {
             firstNum = currentNum;
             currentNum = "2";
     } else if (equated) {
-        console.log('equated');
         firstNum = currentNum;
         currentNum = "2";
         equated = false;
@@ -302,7 +284,6 @@ threeBtn.addEventListener('click', function(e) {
             firstNum = currentNum;
             currentNum = "3";
     } else if (equated) {
-        console.log('equated');
         firstNum = currentNum;
         currentNum = "3";
         equated = false;
@@ -334,7 +315,6 @@ zeroBtn.addEventListener('click', function(e) {
             firstNum = currentNum;
             currentNum = "0";
     } else if (equated) {
-        console.log('equated');
         firstNum = currentNum;
         currentNum = "0";
         equated = false;
@@ -354,8 +334,7 @@ equalsBtn.addEventListener('click', function(e) {
 plusBtn.addEventListener('click', function(e) {
     e.stopPropagation();
     if (operator) {
-        lastNum = currentNum;
-        firstNum,operator,currentNum,equated = equate(firstNum,operator,currentNum); 
+        [firstNum,operator,currentNum,equated] = equate(firstNum,operator,currentNum,equated);
     }
     operator = "+";
     updateReadOut();
