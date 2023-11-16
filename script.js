@@ -149,6 +149,13 @@ nineBtn.addEventListener('click', function(e) {
 
 divideBtn.addEventListener('click', function(e) {
     e.stopPropagation();
+    if ((operator) && (currentNum.toString().length < 10)) {
+        [firstNum,operator,currentNum,equated] = equate(firstNum,operator,currentNum,equated);
+    } else if (currentNum.toString().length === 10){
+        // Max readOut length, don't add another number
+    }
+    operator = "/";
+    updateReadOut();
 });
 
 fourBtn.addEventListener('click', function(e) {
@@ -222,6 +229,11 @@ sixBtn.addEventListener('click', function(e) {
 
 multiplyBtn.addEventListener('click', function(e) {
     e.stopPropagation();
+    if ((operator) && (currentNum.toString().length < 10)) {
+        [firstNum,operator,currentNum,equated] = equate(firstNum,operator,currentNum,equated);
+    } 
+    operator = "*";
+    updateReadOut();
 });
 
 oneBtn.addEventListener('click', function(e) {
@@ -295,6 +307,13 @@ threeBtn.addEventListener('click', function(e) {
 
 minusBtn.addEventListener('click', function(e) {
     e.stopPropagation();
+    if ((operator) && (currentNum.toString().length < 10)) {
+        [firstNum,operator,currentNum,equated] = equate(firstNum,operator,currentNum,equated);
+    } else if (currentNum.toString().length === 10){
+        // Max readOut length, don't add another number
+    }
+    operator = "-";
+    updateReadOut();
 });
 
 decimalBtn.addEventListener('click', function(e) {
@@ -326,15 +345,17 @@ zeroBtn.addEventListener('click', function(e) {
 
 equalsBtn.addEventListener('click', function(e) {
     e.stopPropagation();
-    firstNum,operator,currentNum = equate(firstNum,operator,currentNum);
+    [firstNum,operator,currentNum,equated] = equate(firstNum,operator,currentNum,equated);
     operator = "";
     updateReadOut();
 });
 
 plusBtn.addEventListener('click', function(e) {
     e.stopPropagation();
-    if (operator) {
+    if ((operator) && (currentNum.toString().length < 10)) {
         [firstNum,operator,currentNum,equated] = equate(firstNum,operator,currentNum,equated);
+    } else if (currentNum.toString().length === 10){
+        // Max readOut length, don't add another number
     }
     operator = "+";
     updateReadOut();
