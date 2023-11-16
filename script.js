@@ -45,6 +45,7 @@ function equate(firstNum,operator,currentNum,equated) {
     total = firstNum + operator + currentNum;
     total = total.split(/(?=[\W])|(?<=[\W])/);
     total = operators[total[1]](firstNum,currentNum);
+    firstNum = currentNum;
     currentNum = total;
     equated = true;
     return [firstNum,operator,currentNum,equated];
@@ -348,8 +349,10 @@ zeroBtn.addEventListener('click', function(e) {
 
 equalsBtn.addEventListener('click', function(e) {
     e.stopPropagation();
+    if ((operator) && (currentNum.toString().length < 10)) {
     [firstNum,operator,currentNum,equated] = equate(firstNum,operator,currentNum,equated);
-    operator = "";
+    }
+    // operator = "";
     updateReadOut();
 });
 
