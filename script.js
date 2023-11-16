@@ -71,6 +71,9 @@ deleteBtn.addEventListener('click', function(e) {
     currentNum = currentNum.split('');
     currentNum.splice(-1,1);
     currentNum = currentNum.join('');
+    if (currentNum === "") {
+        currentNum = "0";
+    }
     updateReadOut();
 });
 
