@@ -40,11 +40,12 @@ let equated = false;
 // FUNCTIONS
 
 function equate(firstNum,operator,currentNum,equated) {
-    firstNum = parseInt(firstNum);
-    currentNum = parseInt(currentNum);
+    firstNum = parseFloat(firstNum);
+    currentNum = parseFloat(currentNum);
     total = firstNum + operator + currentNum;
     total = total.split(/(?=[\W])|(?<=[\W])/);
-    total = operators[total[1]](firstNum,currentNum);
+    console.log(total);
+    total = operators[operator](firstNum,currentNum);
     firstNum = currentNum;
     currentNum = total;
     equated = true;
@@ -322,6 +323,8 @@ minusBtn.addEventListener('click', function(e) {
 
 decimalBtn.addEventListener('click', function(e) {
     e.stopPropagation();
+    currentNum += ".";
+    updateReadOut();
 });
 
 zeroBtn.addEventListener('click', function(e) {
