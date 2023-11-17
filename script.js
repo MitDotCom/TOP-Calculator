@@ -100,8 +100,6 @@ deleteBtn.addEventListener('click', function(e) {
     updateReadOut();
 });
 
-// working out logic just on seven button for now
-
 sevenBtn.addEventListener('click', function(e) {
     numberAction("7");
 });
@@ -116,9 +114,22 @@ eightBtn.addEventListener('click', function(e) {
     numberAction("8");
 });
 
+eightBtn.addEventListener('keydown', function(e) {
+    if (e.key == "8") {
+        numberAction("8");
+    }
+});
+
 nineBtn.addEventListener('click', function(e) {
     numberAction("9");
 });
+
+nineBtn.addEventListener('keydown', function(e) {
+    if (e.key == "9") {
+        numberAction("9");
+    }
+});
+
 
 divideBtn.addEventListener('click', function(e) {
     e.stopPropagation();
@@ -135,12 +146,30 @@ fourBtn.addEventListener('click', function(e) {
     numberAction("4");
 });
 
+fourBtn.addEventListener('keydown', function(e) {
+    if (e.key == "4") {
+        numberAction("4");
+    }
+});
+
 fiveBtn.addEventListener('click', function(e) {
     numberAction("5");
 });
 
+fiveBtn.addEventListener('keydown', function(e) {
+    if (e.key == "5") {
+        numberAction("5");
+    }
+});
+
 sixBtn.addEventListener('click', function(e) {
     numberAction("6");
+});
+
+sixBtn.addEventListener('keydown', function(e) {
+    if (e.key == "6") {
+        numberAction("6");
+    }
 });
 
 multiplyBtn.addEventListener('click', function(e) {
@@ -156,12 +185,31 @@ oneBtn.addEventListener('click', function(e) {
     numberAction("1");
 });
 
+oneBtn.addEventListener('keydown', function(e) {
+    if (e.key == "1") {
+        numberAction("1");
+    }
+});
+
 twoBtn.addEventListener('click', function(e) {
     numberAction("2");
 });
 
+twoBtn.addEventListener('keydown', function(e) {
+    if (e.key == "2") {
+        numberAction("2");
+    }
+});
+
+
 threeBtn.addEventListener('click', function(e) {
     numberAction("3");
+});
+
+threeBtn.addEventListener('keydown', function(e) {
+    if (e.key == "3") {
+        numberAction("3");
+    }
 });
 
 minusBtn.addEventListener('click', function(e) {
@@ -185,6 +233,12 @@ decimalBtn.addEventListener('click', function(e) {
 
 zeroBtn.addEventListener('click', function(e) {
     numberAction("0");
+});
+
+zeroBtn.addEventListener('keydown', function(e) {
+    if (e.key == "0") {
+        numberAction("0");
+    }
 });
 
 equalsBtn.addEventListener('click', function(e) {
