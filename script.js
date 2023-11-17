@@ -44,10 +44,10 @@ function equate(firstNum,operator,currentNum,equated) {
     currentNum = parseFloat(currentNum);
     total = firstNum + operator + currentNum;
     total = total.split(/(?=[\W])|(?<=[\W])/);
-    console.log(total);
     total = operators[operator](firstNum,currentNum);
-    firstNum = currentNum;
-    currentNum = total;
+    total = total.toFixed(1);
+    firstNum = currentNum.toString();
+    currentNum = total.toString();
     equated = true;
     return [firstNum,operator,currentNum,equated];
 }
@@ -323,7 +323,9 @@ minusBtn.addEventListener('click', function(e) {
 
 decimalBtn.addEventListener('click', function(e) {
     e.stopPropagation();
-    currentNum += ".";
+    if (!(currentNum.includes('.') === true)) {
+        currentNum += ".";
+    }
     updateReadOut();
 });
 
