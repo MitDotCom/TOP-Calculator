@@ -60,7 +60,6 @@ function updateReadOut() {
 
 function numberAction(numStr) {
     if (currentNum === "0") {
-        console.log('if (currentNum === "0")');
         currentNum = numStr;
         total = currentNum;
         // calc
@@ -107,8 +106,8 @@ sevenBtn.addEventListener('click', function(e) {
     numberAction("7");
 });
 
-sevenBtn.addEventListener('keypress', function(e) {
-    if (e.key === "7") {
+sevenBtn.addEventListener('keydown', function(e) {
+    if (e.key == "7") {
         numberAction("7");
     }
 });
