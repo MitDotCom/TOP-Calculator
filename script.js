@@ -45,7 +45,9 @@ function equate(firstNum,operator,currentNum,equated) {
     total = firstNum + operator + currentNum;
     total = total.split(/(?=[\W])|(?<=[\W])/);
     total = operators[operator](firstNum,currentNum);
-    total = total.toFixed(1);
+    if (total.length > 1) {
+        total = total.toFixed(1);
+    }
     firstNum = currentNum.toString();
     currentNum = total.toString();
     equated = true;
@@ -54,6 +56,29 @@ function equate(firstNum,operator,currentNum,equated) {
 
 function updateReadOut() {
     currentNumCalc.textContent = currentNum;
+}
+
+function numberAction(numStr) {
+    if (currentNum === "0") {
+        console.log('if (currentNum === "0")');
+        currentNum = numStr;
+        total = currentNum;
+        // calc
+
+    } else if (currentNum.toString().length === 10){
+        // Max readOut length, don't add another number
+    } else if 
+        ((!(operator === "")) && (firstNum === "0")) {
+            firstNum = currentNum;
+            currentNum = numStr;
+    } else if (equated) {
+        firstNum = currentNum;
+        currentNum = numStr;
+        equated = false;
+    } else {
+        currentNum += numStr;
+    }
+    updateReadOut();
 }
 
 // EVENT LISTENERS
@@ -79,74 +104,21 @@ deleteBtn.addEventListener('click', function(e) {
 // working out logic just on seven button for now
 
 sevenBtn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    if (currentNum === "0") {
-        console.log('if (currentNum === "0")');
-        currentNum = "7";
-        total = currentNum;
-        // calc
+    numberAction("7");
+});
 
-    } else if (currentNum.toString().length === 10){
-        // Max readOut length, don't add another number
-    } else if 
-        ((!(operator === "")) && (firstNum === "0")) {
-            firstNum = currentNum;
-            currentNum = "7";
-    } else if (equated) {
-        firstNum = currentNum;
-        currentNum = "7";
-        equated = false;
-    } else {
-        currentNum += "7";
+sevenBtn.addEventListener('keypress', function(e) {
+    if (e.key === "7") {
+        numberAction("7");
     }
-    updateReadOut();
-    
 });
 
 eightBtn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    if (currentNum === "0") {
-        currentNum = "8";
-        total = currentNum;
-        // calc
-
-    } else if (currentNum.toString().length === 10){
-        // Max readOut length, don't add another number
-    } else if 
-        ((!(operator === "")) && (firstNum === "0")) {
-            firstNum = currentNum;
-            currentNum = "8";
-    } else if (equated) {
-        firstNum = currentNum;
-        currentNum = "8";
-        equated = false;
-    } else {
-        currentNum += "8";
-    }
-    updateReadOut();
+    numberAction("8");
 });
 
 nineBtn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    if (currentNum === "0") {
-        currentNum = "9";
-        total = currentNum;
-        // calc
-
-    } else if (currentNum.toString().length === 10){
-        // Max readOut length, don't add another number
-    } else if 
-        ((!(operator === "")) && (firstNum === "0")) {
-            firstNum = currentNum;
-            currentNum = "9";
-    } else if (equated) {
-        firstNum = currentNum;
-        currentNum = "9";
-        equated = false;
-    } else {
-        currentNum += "9";
-    }
-    updateReadOut();
+    numberAction("9");
 });
 
 divideBtn.addEventListener('click', function(e) {
@@ -161,72 +133,15 @@ divideBtn.addEventListener('click', function(e) {
 });
 
 fourBtn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    if (currentNum === "0") {
-        currentNum = "4";
-        total = currentNum;
-        // calc
-
-    } else if (currentNum.toString().length === 10){
-        // Max readOut length, don't add another number
-    } else if 
-        ((!(operator === "")) && (firstNum === "0")) {
-            firstNum = currentNum;
-            currentNum = "4";
-    } else if (equated) {
-        firstNum = currentNum;
-        currentNum = "4";
-        equated = false;
-    } else {
-        currentNum += "4";
-    }
-    updateReadOut();
+    numberAction("4");
 });
 
 fiveBtn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    if (currentNum === "0") {
-        currentNum = "5";
-        total = currentNum;
-        // calc
-
-    } else if (currentNum.toString().length === 10){
-        // Max readOut length, don't add another number
-    } else if 
-        ((!(operator === "")) && (firstNum === "0")) {
-            firstNum = currentNum;
-            currentNum = "5";
-    } else if (equated) {
-        firstNum = currentNum;
-        currentNum = "5";
-        equated = false;
-    } else {
-        currentNum += "5";
-    }
-    updateReadOut();
+    numberAction("5");
 });
 
 sixBtn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    if (currentNum === "0") {
-        currentNum = "6";
-        total = currentNum;
-        // calc
-
-    } else if (currentNum.toString().length === 10){
-        // Max readOut length, don't add another number
-    } else if 
-        ((!(operator === "")) && (firstNum === "0")) {
-            firstNum = currentNum;
-            currentNum = "6";
-    } else if (equated) {
-        firstNum = currentNum;
-        currentNum = "8";
-        equated = false;
-    } else {
-        currentNum += "6";
-    }
-    updateReadOut();
+    numberAction("6");
 });
 
 multiplyBtn.addEventListener('click', function(e) {
@@ -239,72 +154,15 @@ multiplyBtn.addEventListener('click', function(e) {
 });
 
 oneBtn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    if (currentNum === "0") {
-        currentNum = "1";
-        total = currentNum;
-        // calc
-
-    } else if (currentNum.toString().length === 10){
-        // Max readOut length, don't add another number
-    } else if 
-        ((!(operator === "")) && (firstNum === "0")) {
-            firstNum = currentNum;
-            currentNum = "1";
-    } else if (equated) {
-        firstNum = currentNum;
-        currentNum = "1";
-        equated = false;
-    } else {
-        currentNum += "1";
-    }
-    updateReadOut();
+    numberAction("1");
 });
 
 twoBtn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    if (currentNum === "0") {
-        currentNum = "2";
-        total = currentNum;
-        // calc
-
-    } else if (currentNum.toString().length === 10){
-        // Max readOut length, don't add another number
-    } else if 
-        ((!(operator === "")) && (firstNum === "0")) {
-            firstNum = currentNum;
-            currentNum = "2";
-    } else if (equated) {
-        firstNum = currentNum;
-        currentNum = "2";
-        equated = false;
-    } else {
-        currentNum += "2";
-    }
-    updateReadOut();
+    numberAction("2");
 });
 
 threeBtn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    if (currentNum === "0") {
-        currentNum = "3";
-        total = currentNum;
-        // calc
-
-    } else if (currentNum.toString().length === 10){
-        // Max readOut length, don't add another number
-    } else if 
-        ((!(operator === "")) && (firstNum === "0")) {
-            firstNum = currentNum;
-            currentNum = "3";
-    } else if (equated) {
-        firstNum = currentNum;
-        currentNum = "3";
-        equated = false;
-    } else {
-        currentNum += "3";
-    }
-    updateReadOut();
+    numberAction("3");
 });
 
 minusBtn.addEventListener('click', function(e) {
@@ -327,26 +185,7 @@ decimalBtn.addEventListener('click', function(e) {
 });
 
 zeroBtn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    if (currentNum === "0") {
-        currentNum = "0";
-        total = currentNum;
-        // calc
-
-    } else if (currentNum.toString().length === 10){
-        // Max readOut length, don't add another number
-    } else if 
-        ((!(operator === "")) && (firstNum === "0")) {
-            firstNum = currentNum;
-            currentNum = "0";
-    } else if (equated) {
-        firstNum = currentNum;
-        currentNum = "0";
-        equated = false;
-    } else {
-        currentNum += "0";
-    }
-    updateReadOut();
+    numberAction("0");
 });
 
 equalsBtn.addEventListener('click', function(e) {
