@@ -1,5 +1,6 @@
 body {
-    background-image: url("lined_paper_by_ll_stock_dakp14-414w-2x.jpg");
+    /* background-image: url("lined_paper_by_ll_stock_dakp14-414w-2x.jpg"); */
+    background-color: lightgrey;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,7 +49,6 @@ body {
 .clearButtons button {
     width: 240px;
     height: 100px;
-    background-color: aqua;
 }
 
 .firstRow button {
@@ -77,13 +77,31 @@ button {
     border: 5px solid black;
     border-radius: 10px;
 }
-
 button:hover {
-    background-color: silver;
+    background-color: lightgray;
+}
+
+.clear {
+    background-color: aqua;
+}
+.clear:hover {
+    background-color: rgb(151, 200, 216);
+}
+
+.delete {
+    background-color: indianred;
+}
+.delete:hover {
+    background-color: lightcoral;
 }
 
 #footer {
     text-align: center;
     margin-top: 115px;
     font-size: 25px;
+}
+
+#footer a {
+    text-decoration: none;
+    color: indianred;
 }

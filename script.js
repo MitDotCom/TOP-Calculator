@@ -53,9 +53,6 @@ function equate(firstNum,operator,currentNum,equated) {
 }
 
 function updateReadOut() {
-    firstNumRead.textContent = firstNum;
-    operatorRead.textContent = operator;
-    currentNumRead.textContent = currentNum;
     currentNumCalc.textContent = currentNum;
 }
 
