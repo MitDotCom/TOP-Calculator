@@ -1,26 +1,23 @@
 // CONSTANTS
-const firstNumRead = document.querySelector('.firstNumRead');
-const operatorRead = document.querySelector('.operatorRead');
-const currentNumRead = document.querySelector('.currentNumRead');
 const currentNumCalc = document.getElementById('currentNumCalc');
 const clearBtn = document.querySelector('.clear');
 const deleteBtn = document.querySelector('.delete');
-const sevenBtn = document.querySelector('.seven');
-const eightBtn = document.querySelector('.eight');
-const nineBtn = document.querySelector('.nine');
-const divideBtn = document.querySelector('.divide');
-const fourBtn = document.querySelector('.four');
-const fiveBtn = document.querySelector('.five');
-const sixBtn = document.querySelector('.six');
-const multiplyBtn = document.querySelector('.multiply');
-const oneBtn = document.querySelector('.one');
-const twoBtn = document.querySelector('.two');
-const threeBtn = document.querySelector('.three');
-const minusBtn = document.querySelector('.minus');
-const decimalBtn = document.querySelector('.decimal');
-const zeroBtn = document.querySelector('.zero');
-const equalsBtn = document.querySelector('.equals');
-const plusBtn = document.querySelector('.plus');
+const sevenBtn = document.getElementById('7');
+const eightBtn = document.getElementById('8');
+const nineBtn = document.getElementById('9');
+const divideBtn = document.getElementById('/');
+const fourBtn = document.getElementById('4');
+const fiveBtn = document.getElementById('5');
+const sixBtn = document.getElementById('6');
+const multiplyBtn = document.getElementById('*');
+const oneBtn = document.getElementById('1');
+const twoBtn = document.getElementById('2');
+const threeBtn = document.getElementById('3');
+const minusBtn = document.getElementById('-');
+const decimalBtn = document.getElementById('.');
+const zeroBtn = document.getElementById('0');
+const equalsBtn = document.getElementById('=');
+const plusBtn = document.getElementById('+');
 
 const maxNum = 9999999999;
 const operators = {
@@ -89,6 +86,17 @@ clearBtn.addEventListener('click', function(e) {
     updateReadOut();
 });
 
+function clickDelete() {
+    e.stopPropagation();
+    currentNum = currentNum.split('');
+    currentNum.splice(-1,1);
+    currentNum = currentNum.join('');
+    if (currentNum === "") {
+        currentNum = "0";
+    }
+    updateReadOut()
+}
+
 deleteBtn.addEventListener('click', function(e) {
     e.stopPropagation();
     currentNum = currentNum.split('');
@@ -100,36 +108,22 @@ deleteBtn.addEventListener('click', function(e) {
     updateReadOut();
 });
 
-sevenBtn.addEventListener('click', function(e) {
-    numberAction("7");
-});
-
-sevenBtn.addEventListener('keydown', function(e) {
-    if (e.key == "7") {
-        numberAction("7");
+window.addEventListener('keydown', function(e) {
+    e.stopPropagation();
+    let targetKey = e.key;
+    console.log(targetKey);
+    if (targetKey.match(/[0-9]/)) {
+        numberAction(targetKey);
     }
 });
 
-eightBtn.addEventListener('click', function(e) {
-    numberAction("8");
-});
-
-eightBtn.addEventListener('keydown', function(e) {
-    if (e.key == "8") {
-        numberAction("8");
+buttons.addEventListener('click', function(e) {
+    e.stopPropagation();
+    let targetButton = e.target.id;
+    if (targetButton.match(/[0-9]/)) {
+        numberAction(targetButton);
     }
 });
-
-nineBtn.addEventListener('click', function(e) {
-    numberAction("9");
-});
-
-nineBtn.addEventListener('keydown', function(e) {
-    if (e.key == "9") {
-        numberAction("9");
-    }
-});
-
 
 divideBtn.addEventListener('click', function(e) {
     e.stopPropagation();
@@ -142,36 +136,6 @@ divideBtn.addEventListener('click', function(e) {
     updateReadOut();
 });
 
-fourBtn.addEventListener('click', function(e) {
-    numberAction("4");
-});
-
-fourBtn.addEventListener('keydown', function(e) {
-    if (e.key == "4") {
-        numberAction("4");
-    }
-});
-
-fiveBtn.addEventListener('click', function(e) {
-    numberAction("5");
-});
-
-fiveBtn.addEventListener('keydown', function(e) {
-    if (e.key == "5") {
-        numberAction("5");
-    }
-});
-
-sixBtn.addEventListener('click', function(e) {
-    numberAction("6");
-});
-
-sixBtn.addEventListener('keydown', function(e) {
-    if (e.key == "6") {
-        numberAction("6");
-    }
-});
-
 multiplyBtn.addEventListener('click', function(e) {
     e.stopPropagation();
     if ((operator) && (currentNum.toString().length < 10)) {
@@ -179,37 +143,6 @@ multiplyBtn.addEventListener('click', function(e) {
     } 
     operator = "*";
     updateReadOut();
-});
-
-oneBtn.addEventListener('click', function(e) {
-    numberAction("1");
-});
-
-oneBtn.addEventListener('keydown', function(e) {
-    if (e.key == "1") {
-        numberAction("1");
-    }
-});
-
-twoBtn.addEventListener('click', function(e) {
-    numberAction("2");
-});
-
-twoBtn.addEventListener('keydown', function(e) {
-    if (e.key == "2") {
-        numberAction("2");
-    }
-});
-
-
-threeBtn.addEventListener('click', function(e) {
-    numberAction("3");
-});
-
-threeBtn.addEventListener('keydown', function(e) {
-    if (e.key == "3") {
-        numberAction("3");
-    }
 });
 
 minusBtn.addEventListener('click', function(e) {
@@ -229,16 +162,6 @@ decimalBtn.addEventListener('click', function(e) {
         currentNum += ".";
     }
     updateReadOut();
-});
-
-zeroBtn.addEventListener('click', function(e) {
-    numberAction("0");
-});
-
-zeroBtn.addEventListener('keydown', function(e) {
-    if (e.key == "0") {
-        numberAction("0");
-    }
 });
 
 equalsBtn.addEventListener('click', function(e) {
