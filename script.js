@@ -43,6 +43,11 @@ function equate(firstNum,operator,currentNum,equated) {
     total = total.split(/(?=[\W])|(?<=[\W])/);
     total = operators[operator](firstNum,currentNum);
     total = total.toFixed(1);
+    total = total.toString();
+    if (total.includes('0',-1)) {
+        total = parseInt(total);
+        total = total.toFixed(0);
+    };
     firstNum = currentNum.toString();
     currentNum = total.toString();
     equated = true;
@@ -61,24 +66,11 @@ clearBtn.addEventListener('click', function(e) {
     operator =  "";
     updateReadOut();
     return [firstNum,operator,currentNum,equated];
-}
-
-function deleter() {
-    currentNum = currentNum.split('');
-    currentNum.splice(-1,1);
-    currentNum = currentNum.join('');
-    if (currentNum === "") {
-        currentNum = "0";
-    }
-    updateReadOut();
 });
-
-// working out logic just on seven button for now
 
 sevenBtn.addEventListener('click', function(e) {
     e.stopPropagation();
     if (currentNum === "0") {
-        console.log('if (currentNum === "0")');
         currentNum = "7";
         total = currentNum;
         // calc
