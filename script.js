@@ -35,6 +35,48 @@ let total = "0";
 let equated = false;
 
 // FUNCTIONS
+// function seven() {
+//     if (currentNum === "0") {
+//         console.log('if (currentNum === "0")');
+//         currentNum = "7";
+//         total = currentNum;
+//     } else if (currentNum.toString().length === 10){
+//         // Max readOut length, don't add another number
+//     } else if 
+//         ((!(operator === "")) && (firstNum === "0")) {
+//             firstNum = currentNum;
+//             currentNum = "7";
+//     } else if (equated) {
+//         firstNum = currentNum;
+//         currentNum = "7";
+//         equated = false;
+//     } else {
+//         currentNum += "7";
+//     }
+//     updateReadOut();
+// }
+
+// function eight() {
+//     if (currentNum === "0") {
+//         currentNum = "8";
+//         total = currentNum;
+//         // calc
+
+//     } else if (currentNum.toString().length === 10){
+//         // Max readOut length, don't add another number
+//     } else if 
+//         ((!(operator === "")) && (firstNum === "0")) {
+//             firstNum = currentNum;
+//             currentNum = "8";
+//     } else if (equated) {
+//         firstNum = currentNum;
+//         currentNum = "8";
+//         equated = false;
+//     } else {
+//         currentNum += "8";
+//     }
+//     updateReadOut();
+// }
 
 function equate(firstNum,operator,currentNum,equated) {
     firstNum = parseFloat(firstNum);
@@ -106,15 +148,15 @@ function divider() {
 }
 // EVENT LISTENERS
 
-window.addEventListener('keydown', function(e) {
+window.addEventListener('keydown', function(e,firstNum,operator,currentNum,equated) {
     e.stopPropagation();
     let targetKey = e.key;
     console.log(typeof targetKey,targetKey);
     console.log(`firstNum:${firstNum},operator:${operator},currentNum${currentNum},equated${equated}`)
     if (targetKey.match(/0/)) {
-        numberAction(targetKey);
+        // numberAction(targetKey);
     } else if (targetKey.match(/1/)) {
-        currentNum = targetKey;
+        // currentNum = targetKey;
         numberAction(targetKey);
     } else if (targetKey.match(/2/)) {
         numberAction(targetKey);
@@ -127,6 +169,7 @@ window.addEventListener('keydown', function(e) {
     } else if (targetKey.match(/6/)) {
         numberAction(targetKey);
     } else if (targetKey.match(/7/)) {
+        // seven();
         numberAction(targetKey);
     } else if (targetKey.match(/8/)) {
         numberAction(targetKey);
@@ -139,9 +182,10 @@ window.addEventListener('keydown', function(e) {
     } else if (targetKey.match(/\//)) {
         divider();
     }
+    return [firstNum,operator,currentNum,equated];
     });
 
-buttons.addEventListener('click', function(e) {
+buttons.addEventListener('click', function(e,firstNum,operator,currentNum,equated) {
     e.stopPropagation();
     let targetButton = e.target.id;
     if (targetButton.match(/[0-9]/)) {
@@ -149,6 +193,7 @@ buttons.addEventListener('click', function(e) {
     } else if (targetButton.match(/=/)) {
         equals();
     }
+    return [firstNum,operator,currentNum,equated];
 });
 
 clearBtn.addEventListener('click', function(e) {
