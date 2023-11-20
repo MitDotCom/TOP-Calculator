@@ -35,48 +35,6 @@ let total = "0";
 let equated = false;
 
 // FUNCTIONS
-// function seven() {
-//     if (currentNum === "0") {
-//         console.log('if (currentNum === "0")');
-//         currentNum = "7";
-//         total = currentNum;
-//     } else if (currentNum.toString().length === 10){
-//         // Max readOut length, don't add another number
-//     } else if 
-//         ((!(operator === "")) && (firstNum === "0")) {
-//             firstNum = currentNum;
-//             currentNum = "7";
-//     } else if (equated) {
-//         firstNum = currentNum;
-//         currentNum = "7";
-//         equated = false;
-//     } else {
-//         currentNum += "7";
-//     }
-//     updateReadOut();
-// }
-
-// function eight() {
-//     if (currentNum === "0") {
-//         currentNum = "8";
-//         total = currentNum;
-//         // calc
-
-//     } else if (currentNum.toString().length === 10){
-//         // Max readOut length, don't add another number
-//     } else if 
-//         ((!(operator === "")) && (firstNum === "0")) {
-//             firstNum = currentNum;
-//             currentNum = "8";
-//     } else if (equated) {
-//         firstNum = currentNum;
-//         currentNum = "8";
-//         equated = false;
-//     } else {
-//         currentNum += "8";
-//     }
-//     updateReadOut();
-// }
 
 function equate(firstNum,operator,currentNum,equated) {
     firstNum = parseFloat(firstNum);
@@ -84,9 +42,7 @@ function equate(firstNum,operator,currentNum,equated) {
     total = firstNum + operator + currentNum;
     total = total.split(/(?=[\W])|(?<=[\W])/);
     total = operators[operator](firstNum,currentNum);
-    if (total.length > 1) {
-        total = total.toFixed(1);
-    }
+    total = total.toFixed(1);
     firstNum = currentNum.toString();
     currentNum = total.toString();
     equated = true;
@@ -97,32 +53,12 @@ function updateReadOut() {
     currentNumCalc.textContent = currentNum;
 }
 
-function numberAction(numStr) {
-    if (currentNum === "0") {
-        currentNum = numStr;
-        total = currentNum;
-        // calc
-
-    } else if (currentNum.toString().length === 10){
-        // Max readOut length, don't add another number
-    } else if 
-        ((!(operator === "")) && (firstNum === "0")) {
-            firstNum = currentNum;
-            currentNum = numStr;
-    } else if (equated) {
-        firstNum = currentNum;
-        currentNum = numStr;
-        equated = false;
-    } else {
-        currentNum += numStr;
-    }
-    updateReadOut();
-}
-function equals(firstNum,operator,currentNum,equated) {
-    if ((operator) && (currentNum.toString().length < 10)) {
-    [firstNum,operator,currentNum,equated] = equate(firstNum,operator,currentNum,equated);
-    }
-    operator = "";
+// EVENT LISTENERS
+clearBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    firstNum = "0";
+    currentNum = "0";
+    operator =  "";
     updateReadOut();
     return [firstNum,operator,currentNum,equated];
 }
@@ -135,72 +71,78 @@ function deleter() {
         currentNum = "0";
     }
     updateReadOut();
-}
-
-function divider() {
-    if ((operator) && (currentNum.toString().length < 10)) {
-        [firstNum,operator,currentNum,equated] = equate(firstNum,operator,currentNum,equated);
-    } else if (currentNum.toString().length === 10){
-        // Max readOut length, don't add another number
-    }
-    operator = "/";
-    updateReadOut();
-}
-// EVENT LISTENERS
-
-window.addEventListener('keydown', function(e,firstNum,operator,currentNum,equated) {
-    e.stopPropagation();
-    let targetKey = e.key;
-    console.log(typeof targetKey,targetKey);
-    console.log(`firstNum:${firstNum},operator:${operator},currentNum${currentNum},equated${equated}`)
-    if (targetKey.match(/0/)) {
-        // numberAction(targetKey);
-    } else if (targetKey.match(/1/)) {
-        // currentNum = targetKey;
-        numberAction(targetKey);
-    } else if (targetKey.match(/2/)) {
-        numberAction(targetKey);
-    } else if (targetKey.match(/3/)) {
-        numberAction(targetKey);
-    } else if (targetKey.match(/4/)) {
-        numberAction(targetKey);
-    } else if (targetKey.match(/5/)) {
-        numberAction(targetKey);
-    } else if (targetKey.match(/6/)) {
-        numberAction(targetKey);
-    } else if (targetKey.match(/7/)) {
-        // seven();
-        numberAction(targetKey);
-    } else if (targetKey.match(/8/)) {
-        numberAction(targetKey);
-    } else if (targetKey.match(/9/)) {
-        numberAction(targetKey);
-    } else if (targetKey.match(/=/)) {
-        equals(firstNum,operator,currentNum,equated);
-    } else if (targetKey.match(/\b/)) {
-        deleter();
-    } else if (targetKey.match(/\//)) {
-        divider();
-    }
-    return [firstNum,operator,currentNum,equated];
-    });
-
-buttons.addEventListener('click', function(e,firstNum,operator,currentNum,equated) {
-    e.stopPropagation();
-    let targetButton = e.target.id;
-    if (targetButton.match(/[0-9]/)) {
-        numberAction(targetButton);
-    } else if (targetButton.match(/=/)) {
-        equals();
-    }
-    return [firstNum,operator,currentNum,equated];
 });
 
-clearBtn.addEventListener('click', function(e) {
+// working out logic just on seven button for now
+
+sevenBtn.addEventListener('click', function(e) {
     e.stopPropagation();
-    firstNum = "0";
-    currentNum = "0";
-    operator =  "";
+    if (currentNum === "0") {
+        console.log('if (currentNum === "0")');
+        currentNum = "7";
+        total = currentNum;
+        // calc
+
+    } else if (currentNum.toString().length === 10){
+        // Max readOut length, don't add another number
+    } else if 
+        ((!(operator === "")) && (firstNum === "0")) {
+            firstNum = currentNum;
+            currentNum = "7";
+    } else if (equated) {
+        firstNum = currentNum;
+        currentNum = "7";
+        equated = false;
+    } else {
+        currentNum += "7";
+    }
+    updateReadOut();
+    
+});
+
+eightBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (currentNum === "0") {
+        currentNum = "8";
+        total = currentNum;
+        // calc
+
+    } else if (currentNum.toString().length === 10){
+        // Max readOut length, don't add another number
+    } else if 
+        ((!(operator === "")) && (firstNum === "0")) {
+            firstNum = currentNum;
+            currentNum = "8";
+    } else if (equated) {
+        firstNum = currentNum;
+        currentNum = "8";
+        equated = false;
+    } else {
+        currentNum += "8";
+    }
+    updateReadOut();
+});
+
+nineBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (currentNum === "0") {
+        currentNum = "9";
+        total = currentNum;
+        // calc
+
+    } else if (currentNum.toString().length === 10){
+        // Max readOut length, don't add another number
+    } else if 
+        ((!(operator === "")) && (firstNum === "0")) {
+            firstNum = currentNum;
+            currentNum = "9";
+    } else if (equated) {
+        firstNum = currentNum;
+        currentNum = "9";
+        equated = false;
+    } else {
+        currentNum += "9";
+    }
     updateReadOut();
 });
 
@@ -215,12 +157,150 @@ divideBtn.addEventListener('click', function(e) {
     updateReadOut();
 });
 
+fourBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (currentNum === "0") {
+        currentNum = "4";
+        total = currentNum;
+        // calc
+
+    } else if (currentNum.toString().length === 10){
+        // Max readOut length, don't add another number
+    } else if 
+        ((!(operator === "")) && (firstNum === "0")) {
+            firstNum = currentNum;
+            currentNum = "4";
+    } else if (equated) {
+        firstNum = currentNum;
+        currentNum = "4";
+        equated = false;
+    } else {
+        currentNum += "4";
+    }
+    updateReadOut();
+});
+
+fiveBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (currentNum === "0") {
+        currentNum = "5";
+        total = currentNum;
+        // calc
+
+    } else if (currentNum.toString().length === 10){
+        // Max readOut length, don't add another number
+    } else if 
+        ((!(operator === "")) && (firstNum === "0")) {
+            firstNum = currentNum;
+            currentNum = "5";
+    } else if (equated) {
+        firstNum = currentNum;
+        currentNum = "5";
+        equated = false;
+    } else {
+        currentNum += "5";
+    }
+    updateReadOut();
+});
+
+sixBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (currentNum === "0") {
+        currentNum = "6";
+        total = currentNum;
+        // calc
+
+    } else if (currentNum.toString().length === 10){
+        // Max readOut length, don't add another number
+    } else if 
+        ((!(operator === "")) && (firstNum === "0")) {
+            firstNum = currentNum;
+            currentNum = "6";
+    } else if (equated) {
+        firstNum = currentNum;
+        currentNum = "8";
+        equated = false;
+    } else {
+        currentNum += "6";
+    }
+    updateReadOut();
+});
+
 multiplyBtn.addEventListener('click', function(e) {
     e.stopPropagation();
     if ((operator) && (currentNum.toString().length < 10)) {
         [firstNum,operator,currentNum,equated] = equate(firstNum,operator,currentNum,equated);
     } 
     operator = "*";
+    updateReadOut();
+});
+
+oneBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (currentNum === "0") {
+        currentNum = "1";
+        total = currentNum;
+        // calc
+
+    } else if (currentNum.toString().length === 10){
+        // Max readOut length, don't add another number
+    } else if 
+        ((!(operator === "")) && (firstNum === "0")) {
+            firstNum = currentNum;
+            currentNum = "1";
+    } else if (equated) {
+        firstNum = currentNum;
+        currentNum = "1";
+        equated = false;
+    } else {
+        currentNum += "1";
+    }
+    updateReadOut();
+});
+
+twoBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (currentNum === "0") {
+        currentNum = "2";
+        total = currentNum;
+        // calc
+
+    } else if (currentNum.toString().length === 10){
+        // Max readOut length, don't add another number
+    } else if 
+        ((!(operator === "")) && (firstNum === "0")) {
+            firstNum = currentNum;
+            currentNum = "2";
+    } else if (equated) {
+        firstNum = currentNum;
+        currentNum = "2";
+        equated = false;
+    } else {
+        currentNum += "2";
+    }
+    updateReadOut();
+});
+
+threeBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (currentNum === "0") {
+        currentNum = "3";
+        total = currentNum;
+        // calc
+
+    } else if (currentNum.toString().length === 10){
+        // Max readOut length, don't add another number
+    } else if 
+        ((!(operator === "")) && (firstNum === "0")) {
+            firstNum = currentNum;
+            currentNum = "3";
+    } else if (equated) {
+        firstNum = currentNum;
+        currentNum = "3";
+        equated = false;
+    } else {
+        currentNum += "3";
+    }
     updateReadOut();
 });
 
@@ -240,6 +320,38 @@ decimalBtn.addEventListener('click', function(e) {
     if (!(currentNum.includes('.') === true)) {
         currentNum += ".";
     }
+    updateReadOut();
+});
+
+zeroBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (currentNum === "0") {
+        currentNum = "0";
+        total = currentNum;
+        // calc
+
+    } else if (currentNum.toString().length === 10){
+        // Max readOut length, don't add another number
+    } else if 
+        ((!(operator === "")) && (firstNum === "0")) {
+            firstNum = currentNum;
+            currentNum = "0";
+    } else if (equated) {
+        firstNum = currentNum;
+        currentNum = "0";
+        equated = false;
+    } else {
+        currentNum += "0";
+    }
+    updateReadOut();
+});
+
+equalsBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if ((operator) && (currentNum.toString().length < 10)) {
+    [firstNum,operator,currentNum,equated] = equate(firstNum,operator,currentNum,equated);
+    }
+    operator = "";
     updateReadOut();
 });
 
