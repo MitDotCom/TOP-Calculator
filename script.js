@@ -35,48 +35,6 @@ let total = "0";
 let equated = false;
 
 // FUNCTIONS
-// function seven() {
-//     if (currentNum === "0") {
-//         console.log('if (currentNum === "0")');
-//         currentNum = "7";
-//         total = currentNum;
-//     } else if (currentNum.toString().length === 10){
-//         // Max readOut length, don't add another number
-//     } else if 
-//         ((!(operator === "")) && (firstNum === "0")) {
-//             firstNum = currentNum;
-//             currentNum = "7";
-//     } else if (equated) {
-//         firstNum = currentNum;
-//         currentNum = "7";
-//         equated = false;
-//     } else {
-//         currentNum += "7";
-//     }
-//     updateReadOut();
-// }
-
-// function eight() {
-//     if (currentNum === "0") {
-//         currentNum = "8";
-//         total = currentNum;
-//         // calc
-
-//     } else if (currentNum.toString().length === 10){
-//         // Max readOut length, don't add another number
-//     } else if 
-//         ((!(operator === "")) && (firstNum === "0")) {
-//             firstNum = currentNum;
-//             currentNum = "8";
-//     } else if (equated) {
-//         firstNum = currentNum;
-//         currentNum = "8";
-//         equated = false;
-//     } else {
-//         currentNum += "8";
-//     }
-//     updateReadOut();
-// }
 
 function equate(firstNum,operator,currentNum,equated) {
     firstNum = parseFloat(firstNum);
@@ -156,7 +114,7 @@ eightBtn.addEventListener('click', function(e) {
     }
     updateReadOut();
     return [firstNum,operator,currentNum,equated];
-}
+});
 
 nineBtn.addEventListener('click', function(e) {
     e.stopPropagation();
