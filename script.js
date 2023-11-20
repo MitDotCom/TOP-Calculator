@@ -1,26 +1,23 @@
 // CONSTANTS
-const firstNumRead = document.querySelector('.firstNumRead');
-const operatorRead = document.querySelector('.operatorRead');
-const currentNumRead = document.querySelector('.currentNumRead');
 const currentNumCalc = document.getElementById('currentNumCalc');
 const clearBtn = document.querySelector('.clear');
 const deleteBtn = document.querySelector('.delete');
-const sevenBtn = document.querySelector('.seven');
-const eightBtn = document.querySelector('.eight');
-const nineBtn = document.querySelector('.nine');
-const divideBtn = document.querySelector('.divide');
-const fourBtn = document.querySelector('.four');
-const fiveBtn = document.querySelector('.five');
-const sixBtn = document.querySelector('.six');
-const multiplyBtn = document.querySelector('.multiply');
-const oneBtn = document.querySelector('.one');
-const twoBtn = document.querySelector('.two');
-const threeBtn = document.querySelector('.three');
-const minusBtn = document.querySelector('.minus');
-const decimalBtn = document.querySelector('.decimal');
-const zeroBtn = document.querySelector('.zero');
-const equalsBtn = document.querySelector('.equals');
-const plusBtn = document.querySelector('.plus');
+const sevenBtn = document.getElementById('7');
+const eightBtn = document.getElementById('8');
+const nineBtn = document.getElementById('9');
+const divideBtn = document.getElementById('/');
+const fourBtn = document.getElementById('4');
+const fiveBtn = document.getElementById('5');
+const sixBtn = document.getElementById('6');
+const multiplyBtn = document.getElementById('*');
+const oneBtn = document.getElementById('1');
+const twoBtn = document.getElementById('2');
+const threeBtn = document.getElementById('3');
+const minusBtn = document.getElementById('-');
+const decimalBtn = document.getElementById('.');
+const zeroBtn = document.getElementById('0');
+const equalsBtn = document.getElementById('=');
+const plusBtn = document.getElementById('+');
 
 const maxNum = 9999999999;
 const operators = {
@@ -38,6 +35,48 @@ let total = "0";
 let equated = false;
 
 // FUNCTIONS
+// function seven() {
+//     if (currentNum === "0") {
+//         console.log('if (currentNum === "0")');
+//         currentNum = "7";
+//         total = currentNum;
+//     } else if (currentNum.toString().length === 10){
+//         // Max readOut length, don't add another number
+//     } else if 
+//         ((!(operator === "")) && (firstNum === "0")) {
+//             firstNum = currentNum;
+//             currentNum = "7";
+//     } else if (equated) {
+//         firstNum = currentNum;
+//         currentNum = "7";
+//         equated = false;
+//     } else {
+//         currentNum += "7";
+//     }
+//     updateReadOut();
+// }
+
+// function eight() {
+//     if (currentNum === "0") {
+//         currentNum = "8";
+//         total = currentNum;
+//         // calc
+
+//     } else if (currentNum.toString().length === 10){
+//         // Max readOut length, don't add another number
+//     } else if 
+//         ((!(operator === "")) && (firstNum === "0")) {
+//             firstNum = currentNum;
+//             currentNum = "8";
+//     } else if (equated) {
+//         firstNum = currentNum;
+//         currentNum = "8";
+//         equated = false;
+//     } else {
+//         currentNum += "8";
+//     }
+//     updateReadOut();
+// }
 
 function equate(firstNum,operator,currentNum,equated) {
     firstNum = parseFloat(firstNum);
@@ -60,7 +99,6 @@ function updateReadOut() {
 
 function numberAction(numStr) {
     if (currentNum === "0") {
-        console.log('if (currentNum === "0")');
         currentNum = numStr;
         total = currentNum;
         // calc
@@ -80,18 +118,16 @@ function numberAction(numStr) {
     }
     updateReadOut();
 }
-
-// EVENT LISTENERS
-clearBtn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    firstNum = "0";
-    currentNum = "0";
-    operator =  "";
+function equals(firstNum,operator,currentNum,equated) {
+    if ((operator) && (currentNum.toString().length < 10)) {
+    [firstNum,operator,currentNum,equated] = equate(firstNum,operator,currentNum,equated);
+    }
+    operator = "";
     updateReadOut();
-});
+    return [firstNum,operator,currentNum,equated];
+}
 
-deleteBtn.addEventListener('click', function(e) {
-    e.stopPropagation();
+function deleter() {
     currentNum = currentNum.split('');
     currentNum.splice(-1,1);
     currentNum = currentNum.join('');
@@ -99,26 +135,73 @@ deleteBtn.addEventListener('click', function(e) {
         currentNum = "0";
     }
     updateReadOut();
-});
+}
 
-// working out logic just on seven button for now
-
-sevenBtn.addEventListener('click', function(e) {
-    numberAction("7");
-});
-
-sevenBtn.addEventListener('keypress', function(e) {
-    if (e.key === "7") {
-        numberAction("7");
+function divider() {
+    if ((operator) && (currentNum.toString().length < 10)) {
+        [firstNum,operator,currentNum,equated] = equate(firstNum,operator,currentNum,equated);
+    } else if (currentNum.toString().length === 10){
+        // Max readOut length, don't add another number
     }
+    operator = "/";
+    updateReadOut();
+}
+// EVENT LISTENERS
+
+window.addEventListener('keydown', function(e,firstNum,operator,currentNum,equated) {
+    e.stopPropagation();
+    let targetKey = e.key;
+    console.log(typeof targetKey,targetKey);
+    console.log(`firstNum:${firstNum},operator:${operator},currentNum${currentNum},equated${equated}`)
+    if (targetKey.match(/0/)) {
+        // numberAction(targetKey);
+    } else if (targetKey.match(/1/)) {
+        // currentNum = targetKey;
+        numberAction(targetKey);
+    } else if (targetKey.match(/2/)) {
+        numberAction(targetKey);
+    } else if (targetKey.match(/3/)) {
+        numberAction(targetKey);
+    } else if (targetKey.match(/4/)) {
+        numberAction(targetKey);
+    } else if (targetKey.match(/5/)) {
+        numberAction(targetKey);
+    } else if (targetKey.match(/6/)) {
+        numberAction(targetKey);
+    } else if (targetKey.match(/7/)) {
+        // seven();
+        numberAction(targetKey);
+    } else if (targetKey.match(/8/)) {
+        numberAction(targetKey);
+    } else if (targetKey.match(/9/)) {
+        numberAction(targetKey);
+    } else if (targetKey.match(/=/)) {
+        equals(firstNum,operator,currentNum,equated);
+    } else if (targetKey.match(/\b/)) {
+        deleter();
+    } else if (targetKey.match(/\//)) {
+        divider();
+    }
+    return [firstNum,operator,currentNum,equated];
+    });
+
+buttons.addEventListener('click', function(e,firstNum,operator,currentNum,equated) {
+    e.stopPropagation();
+    let targetButton = e.target.id;
+    if (targetButton.match(/[0-9]/)) {
+        numberAction(targetButton);
+    } else if (targetButton.match(/=/)) {
+        equals();
+    }
+    return [firstNum,operator,currentNum,equated];
 });
 
-eightBtn.addEventListener('click', function(e) {
-    numberAction("8");
-});
-
-nineBtn.addEventListener('click', function(e) {
-    numberAction("9");
+clearBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    firstNum = "0";
+    currentNum = "0";
+    operator =  "";
+    updateReadOut();
 });
 
 divideBtn.addEventListener('click', function(e) {
@@ -132,18 +215,6 @@ divideBtn.addEventListener('click', function(e) {
     updateReadOut();
 });
 
-fourBtn.addEventListener('click', function(e) {
-    numberAction("4");
-});
-
-fiveBtn.addEventListener('click', function(e) {
-    numberAction("5");
-});
-
-sixBtn.addEventListener('click', function(e) {
-    numberAction("6");
-});
-
 multiplyBtn.addEventListener('click', function(e) {
     e.stopPropagation();
     if ((operator) && (currentNum.toString().length < 10)) {
@@ -151,18 +222,6 @@ multiplyBtn.addEventListener('click', function(e) {
     } 
     operator = "*";
     updateReadOut();
-});
-
-oneBtn.addEventListener('click', function(e) {
-    numberAction("1");
-});
-
-twoBtn.addEventListener('click', function(e) {
-    numberAction("2");
-});
-
-threeBtn.addEventListener('click', function(e) {
-    numberAction("3");
 });
 
 minusBtn.addEventListener('click', function(e) {
@@ -181,19 +240,6 @@ decimalBtn.addEventListener('click', function(e) {
     if (!(currentNum.includes('.') === true)) {
         currentNum += ".";
     }
-    updateReadOut();
-});
-
-zeroBtn.addEventListener('click', function(e) {
-    numberAction("0");
-});
-
-equalsBtn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    if ((operator) && (currentNum.toString().length < 10)) {
-    [firstNum,operator,currentNum,equated] = equate(firstNum,operator,currentNum,equated);
-    }
-    operator = "";
     updateReadOut();
 });
 
